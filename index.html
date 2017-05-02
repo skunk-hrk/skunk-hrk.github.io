@@ -1,8 +1,54 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <style="text/css">
+    <!--
+    .box {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .box {
+  width: 100vw;
+  height: 100vh;
+}
+@media screen and (max-width: 320px) and (max-width: 480px) {
+  .box {
+    width: 320px;
+    height: 480px;
+  }
+}
+.box {
+  display: flex; /* 要素をflexboxに対応させる */
+  align-items: center; /* 縦方向の中央揃え */
+  justify-content: center; /* 横方向の中央揃え */
+  flex-direction: column; /* 子要素の並びを上から下にする（要素の改行に対応） */
+}
+.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+    -->
   </head>
 <body>
-  うんち
+<div class="box__area">
+  <div class="box box__bg_photo">
+  <p>aaa</p>
+  <p>bbb</p>
+</div>
+</div>
 </body>
 </html>
