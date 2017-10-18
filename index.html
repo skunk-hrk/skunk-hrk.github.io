@@ -8,21 +8,21 @@
  <script>
    $(document).ready(function(){
     $('#link_blog').on('click',function(){
-       var target = 'content_area':
+       var target = 'content_area';
        var targetOffset = target.offset().top;
        $('.contents_area').empty();
        $('.contents_area').css('display','block').load("https://skunk-hrk.github.io/blog.html");
        $("html, body").animate({ scrollTop: targetOffset }, 'slow','swing');
     });
     $('#link_study').on('click',function(){
-       var target = 'content_area':
+       var target = 'content_area';
        var targetOffset = target.offset().top;
        $('.contents_area').empty();
        $('.contents_area').css('display','block').load("https://skunk-hrk.github.io/study.html");
        $("html, body").animate({ scrollTop: targetOffset }, 'slow','swing');
     });
     $('#link_portfolio').on('click',function(){
-       var target = 'content_area':
+       var target = 'content_area';
        var targetOffset = target.offset().top;
        $('.contents_area').empty();
        $('.contents_area').css('display','block').load("https://skunk-hrk.github.io/portfolio.html");
