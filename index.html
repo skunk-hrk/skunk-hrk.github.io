@@ -8,16 +8,25 @@
  <script>
    $(document).ready(function(){
     $('#link_blog').on('click',function(){
+       var target = 'content_area':
+       var targetOffset = target.offset().top;
        $('.contents_area').empty();
        $('.contents_area').css('display','block').load("https://skunk-hrk.github.io/blog.html");
+       $("html, body").animate({ scrollTop: targetOffset }, 'slow','swing');
     });
     $('#link_study').on('click',function(){
+       var target = 'content_area':
+       var targetOffset = target.offset().top;
        $('.contents_area').empty();
        $('.contents_area').css('display','block').load("https://skunk-hrk.github.io/study.html");
+       $("html, body").animate({ scrollTop: targetOffset }, 'slow','swing');
     });
     $('#link_portfolio').on('click',function(){
+       var target = 'content_area':
+       var targetOffset = target.offset().top;
        $('.contents_area').empty();
        $('.contents_area').css('display','block').load("https://skunk-hrk.github.io/portfolio.html");
+       $("html, body").animate({ scrollTop: targetOffset }, 'slow','swing');
     });
    });
  </script>
@@ -109,13 +118,13 @@ body{
 <div>
   <ul class="contents">
     <li class="box1 box">
-      <a id="link_blog" class="link" href="/index.html#content_area"></a>
+      <a id="link_blog" class="link"></a>
     </li>
     <li class="box2 box">
-      <a id="link_study" class="link" href="/index.html#content_area"></a>
+      <a id="link_study" class="link"></a>
     </li>
     <li class="box3 box">
-      <a id="link_portfolio" class="link" href="/index.html#content_area"></a>
+      <a id="link_portfolio" class="link"></a>
     </li>
   </ul>
 </div>
