@@ -8,7 +8,16 @@
  <script>
    $(document).ready(function(){
     $('#link_blog').on('click',function(){
+       $('.contents_area').empty();
        $('.contents_area').load("https://skunk-hrk.github.io/blog.html");
+    });
+    $('#link_study').on('click',function(){
+       $('.contents_area').empty();
+       $('.contents_area').load("https://skunk-hrk.github.io/study.html");
+    });
+    $('#link_portfolio').on('click',function(){
+       $('.contents_area').empty();
+       $('.contents_area').load("https://skunk-hrk.github.io/portfolio.html");
     });
    });
  </script>
