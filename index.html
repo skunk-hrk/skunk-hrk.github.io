@@ -14,7 +14,6 @@
        $("html, body").animate({ scrollTop: targetOffset }, 'slow','swing');
     });
     $('#link_study').on('click',function(){
-       var targetOffset = $('#contents_area').offset().top;
        $('.contents_area').empty();
        $('.contents_area').css('display','block').load("https://skunk-hrk.github.io/study.html");
        var targetOffset = $('#contents_area').offset().top;
@@ -126,8 +125,7 @@ body{
     </li>
   </ul>
 </div>
-<div class="contents_area">
-<a name="contents_area"></a>
+<div class="contents_area" id="contents_area">
 
 </div>
 </div>
