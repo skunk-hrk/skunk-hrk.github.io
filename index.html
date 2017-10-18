@@ -3,6 +3,15 @@
   <head>
   </head>
 <body>
+ <!--PC用jQuery-->
+ <script src="js/jquery-2.1.1.min.js"></script>
+ <script>
+   $(document).ready(function(){
+    $('#link_blog').on('click',function(){
+       $('.contents_area').load("https://skunk-hrk.github.io/blog.html");
+    });
+   });
+ </script>
  <!--PC用CSS-->
 <style type="text/css">
 <!--
@@ -91,13 +100,13 @@ body{
 <div>
   <ul class="contents">
     <li class="box1 box">
-      <a href="https://skunk-hrk.github.io/blog.html" class="link link_blog"></a>
+      <a id="link_blog" class="link"></a>
     </li>
     <li class="box2 box">
-      <a href="https://skunk-hrk.github.io/stady.html" class="link link_stady"></a>
+      <a id="link_stady" class="link"></a>
     </li>
     <li class="box3 box">
-      <a href="https://skunk-hrk.github.io/portfolio.html" class="link link_portfolio"></a>
+      <a id="link_portfolio" class="link"></a>
     </li>
   </ul>
 </div>
