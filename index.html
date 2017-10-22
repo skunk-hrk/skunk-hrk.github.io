@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
   </head>
-<body>
+<body style="margin:0;">
 <style type="text/css">
 <!--
 .box {
@@ -38,12 +38,51 @@ justify-content: center;
 -ms-flex-direction: column;
 flex-direction: column;
 }
+
+.box2{
+ width:100%;
+ text-align: center;
+}
+.box2:after{
+  clear: both;
+}
 --></style>
+
+<script>
+function hyoji1(num)
+{
+  if (num == 1)
+  {
+    document.getElementById("blog").style.display="block";
+    document.getElementById("portfolio").style.display="none";
+    document.getElementById("stady").style.display="none";
+  }
+  if (num == 2)
+  {
+    document.getElementById("blog").style.display="none";
+    document.getElementById("portfolio").style.display="block";
+    document.getElementById("stady").style.display="none";
+  }
+  if (num == 0)
+  {
+    document.getElementById("blog").style.display="none";
+    document.getElementById("portfolio").style.display="none";
+    document.getElementById("stady").style.display="block";
+  }
+}
+
+</script>
 <div class="box__area">
   <div class="box box__bg_photo">
-  <p>aaa</p>
-  <p>bbb</p>
-</div>
+    <div class="box2">
+      <img src="image/blog_btn_off.png" onclick="hyoji1(1)">
+      <img src="image/portfolio_btn_off.png" style="margin:0 10%;" onclick="hyoji1(2)">
+      <img src="image/stady_btn_off.png" onclick="hyoji1(0)">
+    </div>
+    <div id="blog" style="display:none;">abc</div>
+    <div id="portfolio" style="display:none;">def</div>
+    <div id="stady" style="display:none;">ghi</div>
+  </div>
 </div>
 </body>
 </html>
