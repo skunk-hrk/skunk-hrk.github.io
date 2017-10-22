@@ -2,87 +2,133 @@
 <html lang="ja">
   <head>
   </head>
-<body style="margin:0;">
+<body>
+ <!--PC用jQuery-->
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+ <script>
+   $(document).ready(function(){
+    $('#link_blog').on('click',function(){
+       $('.contents_area').empty();
+       $('.contents_area').css('display','block').load("https://skunk-hrk.github.io/blog.html");
+       var targetOffset = $('#contents_area').offset().top;
+       $("html, body").animate({ scrollTop: targetOffset }, 'slow','swing');
+    });
+    $('#link_study').on('click',function(){
+       $('.contents_area').empty();
+       $('.contents_area').css('display','block').load("https://skunk-hrk.github.io/study.html");
+       var targetOffset = $('#contents_area').offset().top;
+       $("html, body").animate({ scrollTop: targetOffset }, 'slow','swing');
+    });
+    $('#link_portfolio').on('click',function(){
+       $('.contents_area').empty();
+       $('.contents_area').css('display','block').load("https://skunk-hrk.github.io/portfolio.html");
+       var targetOffset = $('#contents_area').offset().top;
+       $("html, body").animate({ scrollTop: targetOffset }, 'slow','swing');
+    });
+   });
+ </script>
+ <!--PC用CSS-->
 <style type="text/css">
 <!--
-.box {
-width: 100vw;
-height: 100vh;
+body{
+  margin:0;
 }
-@media screen and (max-width: 320px) and (max-width: 480px) {
-.box {
-width: 320px;
-height: 480px;
-}
-}
-.box {
-display: flex; /* 要素をflexboxに対応させる */
-align-items: center; /* 縦方向の中央揃え */
-justify-content: center; /* 横方向の中央揃え */
-flex-direction: column; /* 子要素の並びを上から下にする（要素の改行に対応） */
-}
-.box {
-display: -webkit-box;
-display: -ms-flexbox;
-display: -webkit-flex;
-display: flex;
--webkit-box-align: center;
--ms-flex-align: center;
--webkit-align-items: center;
-align-items: center;
--webkit-box-pack: center;
--ms-flex-pack: center;
--webkit-justify-content: center;
-justify-content: center;
--webkit-flex-direction: column;
--ms-flex-direction: column;
-flex-direction: column;
+.body{
+  height:100vh;
+  width:100vw;
+  background: linear-gradient(#fbfbfb, #f5f5f9);
+  }
+.head_image{
+  width:30%;
+  margin:0 auto;
+  text-align:center;
+  padding-top:15px;
 }
 
-.box2{
- width:100%;
- text-align: center;
+.head_image a{
+    width: 200px;
+    height: 280px;
+    background: url("https://skunk-hrk.github.io/image/top_off.png") no-repeat;
+    background-size:200px 280px;
+    display: block;
 }
-.box2:after{
-  clear: both;
+.head_image a:hover{
+    background: url("https://skunk-hrk.github.io/image/top_on.png") no-repeat;
+    background-size:200px 280px;
 }
+
+.contents{
+  padding:0;
+  text-align:center;
+}
+
+.box{
+  width:30%;
+  display: inline-block;
+  text-align:center;
+ }
+  .box1 a{
+    width: 200px;
+    height: 200px;
+    background: url("https://skunk-hrk.github.io/image/blog_btn_off.png") no-repeat;
+    background-size:200px 200px;
+    display: block;
+  }
+  .box1 a:hover{
+    background: url("https://skunk-hrk.github.io/image/blog_btn_on.png") no-repeat;
+    background-size:200px 200px;
+  }
+  .box2 a{
+    width: 200px;
+    height: 200px;
+    background: url("https://skunk-hrk.github.io/image/stady_btn_off.png") no-repeat;
+    background-size:200px 200px;
+    display: block;
+  }
+  .box2 a:hover{
+    background: url("https://skunk-hrk.github.io/image/stady_btn_on.png") no-repeat;
+    background-size:200px 200px;
+  }
+  .box3 a{
+    width: 200px;
+    height: 200px;
+    background: url("https://skunk-hrk.github.io/image/portfolio_btn_off.png") no-repeat;
+    background-size:200px 200px;
+    display: block;
+  }
+  .box3 a:hover{
+    background: url("https://skunk-hrk.github.io/image/portfolio_btn_on.png") no-repeat;
+    background-size:200px 200px;
+  }
+  .link{
+    margin:0 auto;
+  }
+  .contents_area{
+    display:none;
+  }
 --></style>
-
-<script>
-function hyoji1(num)
-{
-  if (num == 1)
-  {
-    document.getElementById("blog").style.display="block";
-    document.getElementById("portfolio").style.display="none";
-    document.getElementById("stady").style.display="none";
-  }
-  if (num == 2)
-  {
-    document.getElementById("blog").style.display="none";
-    document.getElementById("portfolio").style.display="block";
-    document.getElementById("stady").style.display="none";
-  }
-  if (num == 0)
-  {
-    document.getElementById("blog").style.display="none";
-    document.getElementById("portfolio").style.display="none";
-    document.getElementById("stady").style.display="block";
-  }
-}
-
-</script>
-<div class="box__area">
-  <div class="box box__bg_photo">
-    <div class="box2">
-      <img src="image/blog_btn_off.png" onclick="hyoji1(1)">
-      <img src="image/portfolio_btn_off.png" style="margin:0 10%;" onclick="hyoji1(2)">
-      <img src="image/stady_btn_off.png" onclick="hyoji1(0)">
-    </div>
-    <div id="blog" style="display:none;">abc</div>
-    <div id="portfolio" style="display:none;">def</div>
-    <div id="stady" style="display:none;">ghi</div>
+<div class="body">
+<head>
+  <div class="head_image">
+   <a href="https://skunk-hrk.github.io/index.html" class="link link_top"></a>
   </div>
+</head>
+<div>
+  <ul class="contents">
+    <li class="box1 box">
+      <a id="link_blog" class="link"></a>
+    </li>
+    <li class="box2 box">
+      <a id="link_study" class="link"></a>
+    </li>
+    <li class="box3 box">
+      <a id="link_portfolio" class="link"></a>
+    </li>
+  </ul>
+</div>
+<div class="contents_area" id="contents_area">
+
+</div>
 </div>
 </body>
 </html>
