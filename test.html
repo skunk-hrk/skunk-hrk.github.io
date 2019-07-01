@@ -6,15 +6,33 @@
       html,body {
         font-family: 'Ubuntu', sans-serif;
         }
+      
+      .header_container{
+        display:flex;
+      }
+      
+      .header_icon_right{
+        display:inline-flex;
+      }
+      .header_icon_left{
+        display:inline-flex;
+      }
     </style>
   </head>
 <body>
 <div class="body">
 <head>
-  <div>
-    <a href="/">Skunk</a>
+  <div class="header_container">
+    <div class="header_icon_right">
+      <a href="/">Skunk</a>
+    </div>
+    <div class="header_icon_left">
+      Menu
+    </div>
   </div>
-  <div>
+  
+  
+  <div class="header_icon_left">
     Menu
   </div>
 </head>
