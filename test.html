@@ -134,7 +134,7 @@
     </div>
     <div class="header_icon_left">
 
-      <div class="hamburger_wrap">
+      <div class="hamburger_wrap" id="js-hamburger">
         <div class="hamburger_line hamburger_line1"></div>
         <div class="hamburger_line hamburger_line2"></div>
         <div class="hamburger_line hamburger_line3"></div>
@@ -178,14 +178,16 @@
  function toggleNav() {
     var body = document.body;
     var hamburger = document.getElementById('js-hamburger');
-    var blackBg = document.getElementById('js-black-bg');
+    //var blackBg = document.getElementById('js-black-bg');
 
     hamburger.addEventListener('click', function() {
      body.classList.toggle('nav-open');
     });
+/*
     blackBg.addEventListener('click', function() {
      body.classList.remove('nav-open');
     });
+  */
   }
   toggleNav();
  </script>
