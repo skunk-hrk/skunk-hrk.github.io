@@ -18,9 +18,31 @@
         text-align:left;
       }
       .header_icon_left{
+        position:relative;
         display:inline-block;
         width:50%;
         text-align:right;
+      }
+      
+      .hamburger_wrap{
+        position: absolute;
+        left: 11px;
+        width: 18px;
+        height: 1px;
+        background-color: #111;
+        transition: all .6s;
+      }
+      
+      .hamburger_line1{
+        top:10px;
+      }
+      
+      .hamburger_line1{
+        top:20px;
+      }
+      
+      .hamburger_line1{
+        top:30px;
       }
       
       .grobal_navi{
@@ -46,7 +68,11 @@
       <a href="/">Skunk</a>
     </div>
     <div class="header_icon_left">
-      Menu
+      <div class="hamburger_wrap">
+        <div class="hamburger_line hamburger_line1"></div>
+        <div class="hamburger_line hamburger_line2"></div>
+        <div class="hamburger_line hamburger_line3"></div>
+      </div>
     </div>
   </div>
 </head>
@@ -54,6 +80,7 @@
   <div>
     <img src="">
   </div>
+
   <div class="grobal_navi">
     <div class="navi_work">
       Work
@@ -69,6 +96,7 @@
  <!--PC用jQuery-->
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
  <script>
+   
  </script>
 </body>
 </html>
