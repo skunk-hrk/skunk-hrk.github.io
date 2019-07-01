@@ -57,18 +57,50 @@
         height:3px;
       }
 
-      .grobal_navi{
+      .global_navi{
+         position: fixed;
+         right: -320px; /* これで隠れる */
+         top: 0;
+         width: 300px; /* スマホに収まるくらい */
+         height: 100vh;
+         padding-top: 40px;
+         background-color: #fff;
+         transition: all .6s;
+         z-index: 200;
+         overflow-y: auto; /* メニューが多くなったらスクロールできるように */
+      }
+
+      .global_nav_list{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .global_nav_item {
+        text-align: center;
+        padding: 0 14px;
+      }
+
+      .global_nav_item a {
+        display: block;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        text-decoration: none;
+        color: #111;
+      }
+
+      .fotter_grobal_navi{
         display:flex;
         justify-content: space-around;
         width:60%;
       }
-      .navi_work{
+      .fotter_navi_work{
         display:inline-flex;
       }
-      .navi_blog{
+      .fotter_navi_blog{
         display:inline-flex;
       }
-      .navi_about{
+      .fotter_navi_about{
         display:inline-flex;
       }
     </style>
@@ -86,16 +118,16 @@
         <div class="hamburger_line hamburger_line2"></div>
         <div class="hamburger_line hamburger_line3"></div>
       </div>
-      <div>
-        <ul>
-          <li>
-            Work
+      <div class="global_navi">
+        <ul class="global_nav_list">
+          <li class="global-nav_item">
+            <a href="#">Work</a>
           </li>
-          <ll>
-            Blog
+          <li class="global_nav_item">
+            <a href="#">Blog</a>
           </li>
-          <li>
-            About
+          <li class="global_nav_item">
+            <a href="#">About</a>
           </li>
         </ul>
       </div>
