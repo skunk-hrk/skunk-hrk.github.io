@@ -139,7 +139,7 @@
         <div class="hamburger_line hamburger_line2"></div>
         <div class="hamburger_line hamburger_line3"></div>
       </div>
-      <div class="global_navi">
+      <div class="global_navi" id="js-global_navi">
         <ul class="global_nav_list">
           <li class="global-nav_item">
             <a href="#">Work</a>
@@ -176,7 +176,7 @@
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
  <script>
  function toggleNav() {
-    var body = document.body;
+    var body = document.getElementById('js-global_navi');
     var hamburger = document.getElementById('js-hamburger');
     //var blackBg = document.getElementById('js-black-bg');
 
