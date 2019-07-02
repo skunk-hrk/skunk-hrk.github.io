@@ -11,13 +11,21 @@
         font-family: 'Ubuntu', sans-serif;
         }
 
+        body{
+          background: -moz-radial-gradient(#fff 20%, #ddd 80%);
+          background: -webkit-radial-gradient(#fff 20%, #ddd 80%);
+          background: radial-gradient(#fff 20%, #ddd 80%);
+        }
+
         a{
           text-decoration: none;
           color:black;
         }
 
       .header_container{
-        position:relative;
+        position:fixed;
+        width:100%;
+        background-color: rgba(255,255,255,0.5);
         z-index:1000;
       }
 
@@ -109,14 +117,14 @@
       }
 
       /* 表示された時用のCSS */
-      .nav_open .global_navi {
+      .navi_open .global_navi {
         right: 0;
       }
-      .nav_open .black-bg {
+      .navi_open .black-bg {
         opacity: .8;
         visibility: visible;
       }
-      .nav_open .hamburger_line1 {
+      .navi_open .hamburger_line1 {
         transform: rotate(45deg);
         top: 20px;
       }
@@ -129,7 +137,15 @@
         top: 20px;
       }
 
+      .fotter{
+        position: fixed;
+        bottom: 10px;
+        left: 0;
+        width:100%;
+      }
+
       .fotter_grobal_navi{
+        margin:0 auto;
         display:flex;
         justify-content: space-around;
         width:60%;
@@ -145,15 +161,15 @@
       }
     </style>
   </head>
-<body v-bind:class='{navi_open:isNaviActive}'>
+<body>
 <head>
   <div class="header_container">
     <div class="header_icon_left">
-      <a href="/">Skunk</a>
+      <a href="/" style="padding-left:10px;">Skunk Entertainment</a>
     </div>
-    <div class="header_icon_right">
+    <div id="demo" class="header_icon_right" v-bind:class='{navi_open:isNaviActive}'>
 
-      <div class="hamburger_wrap" v-on:click='isNaviActive=!isNaviActive' id="demo">
+      <div class="hamburger_wrap" v-on:click='isNaviActive=!isNaviActive'>
         <div class="hamburger_line hamburger_line1"></div>
         <div class="hamburger_line hamburger_line2"></div>
         <div class="hamburger_line hamburger_line3"></div>
@@ -177,27 +193,30 @@
     </div>
   </div>
 </head>
-<section style="width:100%; height:100vh;">
-  <div style="width:30%; height:auto; margin:auto; text-align:center;">
-    <img src="https://skunk-hrk.github.io/image/top_on.png" width="100%" height="auto" style="vertical-align:bottom;">
-  </div>
-
-  <div class="grobal_navi">
-    <div class="navi_profile">
-      Profile
-    </div>
-    <div class="navi_work">
-      Work
-    </div>
-    <div class="navi_blog">
-      Blog
-    </div>
-    <div class="navi_about">
-      About
+<section style="width:100%; height:100vh; position:relative;">
+  <div style="position:absolute; top:50%;left:50%;  transform: translateY(-50%) translateX(-50%); -webkit- transform: translateY(-50%) translateX(-50%);">
+    <div style="width:60%; height:auto; margin:auto; text-align:center;">
+      <img src="https://skunk-hrk.github.io/image/top_on.png" width="100%" height="auto" style="vertical-align:bottom;">
     </div>
   </div>
 </section>
 
+<fotter class="fotter">
+  <div class="fotter_grobal_navi">
+    <div class="fotter_navi_profile">
+      Profile
+    </div>
+    <div class="fotter_navi_work">
+      Work
+    </div>
+    <div class="fotter_navi_blog">
+      Blog
+    </div>
+    <div class="fotter_navi_about">
+      About
+    </div>
+  </div>
+</fotter>
 
  <!--PC用jQuery-->
  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
