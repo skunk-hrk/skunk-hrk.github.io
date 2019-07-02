@@ -139,14 +139,14 @@
     <div class="header_icon_right">
       <a href="/">Skunk</a>
     </div>
-    <div class="header_icon_left">
+    <div class="header_icon_left" id="js-global_navi">
 
       <div class="hamburger_wrap" id="js-hamburger">
         <div class="hamburger_line hamburger_line1"></div>
         <div class="hamburger_line hamburger_line2"></div>
         <div class="hamburger_line hamburger_line3"></div>
       </div>
-      <div class="global_navi" id="js-global_navi">
+      <div class="global_navi">
         <ul class="global_nav_list">
           <li class="global_nav_item">
             <a href="#">Work</a>
@@ -183,7 +183,7 @@
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
  <script>
  function toggleNav() {
-    var body = document.getElementById('js-global_navi');
+    var body = document.body;
     var hamburger = document.getElementById('js-hamburger');
     //var blackBg = document.getElementById('js-black-bg');
 
