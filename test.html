@@ -2,6 +2,9 @@
 <html lang="ja">
   <head>
     <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <!--<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.js'></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+    <script src="js/vue.js"></script>
     <style>
       @import url('https://fonts.googleapis.com/css?family=Ubuntu:700&display=swap');
       html,body {
@@ -142,7 +145,7 @@
       }
     </style>
   </head>
-<body v-bind:class='navi_open:isNaviActive'>
+<body v-bind:class='{navi_open:isNaviActive}'>
 <head>
   <div class="header_container">
     <div class="header_icon_left">
@@ -150,7 +153,7 @@
     </div>
     <div class="header_icon_right">
 
-      <div class="hamburger_wrap" v-on:click='isNaviActive=!isNaviActive' id="js-hamburger">
+      <div class="hamburger_wrap" v-on:click='isNaviActive=!isNaviActive' id="demo">
         <div class="hamburger_line hamburger_line1"></div>
         <div class="hamburger_line hamburger_line2"></div>
         <div class="hamburger_line hamburger_line3"></div>
@@ -194,13 +197,22 @@
     </div>
   </div>
 </section>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
 
  <!--PC用jQuery-->
  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
  <script>
+ //import Vue from 'vue';
  Vue.config.devtools = true;
  console.log(Vue);
+ window.onload = function() {
+  var demo = new Vue({
+    el: '#demo',
+    data: {
+      isNaviActive: false,
+    }
+  });
+};
  /*
  function toggleNav() {
     var body = document.body;
