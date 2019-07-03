@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:700&display=swap');
+html,body {
+  font-family: 'Ubuntu', sans-serif;
+      font-size: 3.2vw;
+  }
+
+  .wrapper{
+    color:#0d4c6b;
+    background: -moz-radial-gradient(#fff 20%, #eeeef4 90%);
+    background: -webkit-radial-gradient(#fff 20%, #eeeef4 90%);
+    background: radial-gradient(#fff 20%, #eeeef4 90%);
+    transition: all .6s;
+  }
+
+  a{
+    text-decoration: none;
+    color:#0d4c6b;
+  }
+
+.header_container{
+  position:fixed;
+  width:100%;
+  background-color: rgba(255,255,255,0.5);
+  z-index:1000;
+}
+
+.scroll .header_container {
+  position: fixed;
+  top:0;
+  left:0;
+  background-color:rgba(0.6,0.6,0.6,0.8);
+}
+
+.header_icon_right{
+  position:relative;
+  display:inline-block;
+  width:50%;
+  height:40px;
+  vertical-align: middle;
+  text-align:right;
+}
+.header_icon_left{
+  display:inline-block;
+  width:49%;
+  vertical-align: middle;
+  text-align:left;
+}
+
+.hamburger_wrap{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px; /* クリックしやすいようにちゃんと幅を指定する */
+  height: 40px; /* クリックしやすいようにちゃんと高さを指定する */
+  cursor: pointer;
+  z-index: 300;
+}
+
+.hamburger_line{
+  position: absolute;
+  left: 11px;
+  width: 18px;
+  background-color: #0d4c6b;
+  transition: all .6s;
+}
+
+.hamburger_line1{
+  top:10px;
+  height:3px;
+}
+
+.hamburger_line2{
+  top:20px;
+  height:2px;
+}
+
+.hamburger_line3{
+  top:30px;
+  height:3px;
+}
+
+.global_navi{
+   position: fixed;
+   right: -320px; /* これで隠れる */
+   top: 0;
+   width: 300px; /* スマホに収まるくらい */
+   height: 100vh;
+   padding-top: 40px;
+   background-color: #fff;
+   transition: all .6s;
+   z-index: 200;
+   overflow-y: auto; /* メニューが多くなったらスクロールできるように */
+}
+
+.global_nav_list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.global_nav_item {
+  text-align: center;
+  padding: 0 14px;
+}
+
+.global_nav_item a {
+  display: block;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  text-decoration: none;
+  color: #111;
+}
+
+/* 表示された時用のCSS */
+.navi_open .global_navi {
+  right: 0;
+}
+.navi_open .black-bg {
+  opacity: .8;
+  visibility: visible;
+}
+.navi_open .hamburger_line1 {
+  transform: rotate(45deg);
+  top: 20px;
+}
+.navi_open .hamburger_line2 {
+  width: 0;
+  left: 50%;
+}
+.navi_open .hamburger_line3 {
+  transform: rotate(-45deg);
+  top: 20px;
+}
+
+.footer{
+  position: fixed;
+  font-size: 2.8vw;
+  bottom: 10px;
+  left: 0;
+  width:100%;
+}
+
+.footer_grobal_navi{
+  margin:0 auto;
+  display:flex;
+  justify-content: space-around;
+  width:60%;
+}
+.footer_navi_contents{
+  display:inline-flex;
+}
