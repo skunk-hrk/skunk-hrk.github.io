@@ -109,6 +109,36 @@
       .bg_white{
         background: #fff;
       }
+
+      .web_circle{
+        display: inline-block;
+        border-radius: 50%;
+        line-height: 14vw;
+        width:14vw;
+        height:14vw;
+        background-color: red;
+        vertical-align: middle;
+      }
+
+      .design_circle{
+        display: inline-block;
+        border-radius: 50%;
+        line-height: 22vw;
+        width:22vw;
+        height:22vw;
+        background-color: red;
+        vertical-align: middle;
+      }
+
+      .unity_circle{
+        display: inline-block;
+        border-radius: 50%;
+        line-height: 18vw;
+        width:18vw;
+        height:18vw;
+        background-color: red;
+        vertical-align: middle;
+      }
     </style>
     <!--<script src="https://unpkg.com/vue@2.5.17"></script>-->
     <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
@@ -131,17 +161,17 @@
             </div>
             <div class="global_navi">
               <ul class="global_nav_list">
-                <li class="global_nav_item">
-                  <a href="about.html">About</a>
+                <li class="global_nav_item" v-on:click='type="about";isNaviActive=false'>
+                  About
                 </li>
-                <li class="global_nav_item">
-                  <a href="work.html">Work</a>
+                <li class="global_nav_item" v-on:click='type="work";isNaviActive=false'>
+                  Work
                 </li>
-                <li class="global_nav_item">
-                  <a href="contact.html">Contact</a>
+                <li class="global_nav_item" v-on:click='type="service";isNaviActive=false'>
+                  Contact
                 </li>
-                <li class="global_nav_item">
-                  <a href="service.html">Service</a>
+                <li class="global_nav_item" v-on:click='type="contact";isNaviActive=false'>
+                  Service
                 </li>
               </ul>
             </div>
@@ -155,8 +185,8 @@
             <img src="https://skunk-hrk.github.io/image/top_on.png" width="100%" height="auto" style="vertical-align:bottom; position:relative;" v-on:click='type="default"'>
             <template v-if="type === 'about'">
               <!--パーソナルプロフィール-->
-              <div style="font-size:2vw;">
-                <div class="personal_balloon" style="position:absolute; top:-40%; left:-164%; min-width: 250px;">
+              <div id="show_content" style="font-size:2vw;">
+                <div class="personal_balloon thinkingLeftUpIn" style="position:absolute; top:-40%; left:-164%; min-width: 250px;">
                   <div>
                     Personal Profile
                   </div>
@@ -167,7 +197,7 @@
                 </div>
 
                 <!--趣味-->
-                <div class="hobby_balloon" style="position:absolute; top:40%; left:-155%; min-width: 250px;">
+                <div class="hobby_balloon thinkingLeftDownIn" style="position:absolute; top:40%; left:-155%; min-width: 250px;">
                   <div>
                     Hobby
                   </div>
@@ -181,7 +211,7 @@
                 </div>
 
                 <!--スキル-->
-                <div class="skill_balloon" style="position:absolute; top:-40%; right:-135%; min-width: 250px;">
+                <div class="skill_balloon thinkingRightUpIn" style="position:absolute; top:-40%; right:-135%; min-width: 250px;">
                   <div>
                     Hobby
                   </div>
@@ -193,9 +223,33 @@
                     Illustrator：★★★★☆<br>
                     AfterEffects：★★★☆☆<br>
                     PremirePro：★★★☆☆<br>
+                    Unity：★★☆☆☆<br>
                     PHP：★★☆☆☆<br>
                     MySQL：★☆☆☆☆
                   </div>
+                </div>
+              </div>
+            </template>
+            <template v-else-if="type === 'work'">
+              <div style="font-size:2vw;">
+                <div class="web_circle animated fadeIn" style="position:absolute; top:-70%; left:-80%;">
+                    Web
+                </div>
+                <div class="design_circle animated fadeIn" style="position:absolute; top:-50%; left:115%;">
+                    Design
+                </div>
+                <div class="unity_circle animated fadeIn" style="position:absolute; top:90%; left:-80%;">
+                    Unity
+                </div>
+              </div>
+            </template>
+            <template v-else-if="type === 'service'">
+              <div style="font-size:2vw;">
+                <div class="web_circle animated fadeIn" style="position:absolute; top:-70%; left:-80%;">
+                    Stamp
+                </div>
+                <div class="design_circle animated fadeIn" style="position:absolute; top:-50%; left:115%;">
+                    App
                 </div>
               </div>
             </template>
@@ -205,17 +259,17 @@
 
       <footer class="footer">
         <div class="footer_grobal_navi">
-          <div class="footer_navi_contents"  v-on:click='type="about"'>
+          <div class="footer_navi_contents" v-on:click='type="about"'>
             About
           </div>
-          <div class="footer_navi_contents">
-            <a href="work.html">Work</a>
+          <div class="footer_navi_contents" v-on:click='type="work"'>
+            Work
           </div>
-          <div class="footer_navi_contents">
-            <a href="service.html">Service</a>
+          <div class="footer_navi_contents" v-on:click='type="service"'>
+            Service
           </div>
-          <div class="footer_navi_contents">
-            <a href="contact.html">Contact</a>
+          <div class="footer_navi_contents" v-on:click='type="contact"'>
+            Contact
           </div>
         </div>
         <div class="copyright" style="text-align:center; font-size:2vw; margin:15px auto 5px; color:#798c94;">
@@ -226,7 +280,6 @@
    <script>
     //import Vue from 'vue';
      Vue.config.devtools = true;
-     console.log(Vue);
 
      window.onload = function() {
       var wrap = new Vue({
@@ -234,6 +287,20 @@
         data: {
           isNaviActive: false,
           type: 'default',
+        },
+        methods:{
+          typeChange : function(type){
+            var _type = this.type;
+            var close_element = document.getElementById("show_content");
+            console.log(close_element);
+
+            if(_type == "contact"){
+
+            } else {
+
+            }
+            this.type = type;
+          }
         }
       });
 
