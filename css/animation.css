@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <!--<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.js'></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+    <script src="js/vue.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Ubuntu:700&display=swap');
+      html,body {
+        font-family: 'Ubuntu', sans-serif;
+        }
+
+        body{
+          background: -moz-radial-gradient(#fff 20%, #ddd 80%);
+          background: -webkit-radial-gradient(#fff 20%, #ddd 80%);
+          background: radial-gradient(#fff 20%, #ddd 80%);
+        }
+
+        a{
+          text-decoration: none;
+          color:black;
+        }
+
+      .header_container{
+        position:fixed;
+        width:100%;
+        background-color: rgba(255,255,255,0.5);
+        z-index:1000;
+      }
+
+      .scroll .header_container {
+        position: fixed;
+        top:0;
+        left:0;
+        background-color:rgba(0.6,0.6,0.6,0.8);
+      }
+
+      .header_icon_right{
+        position:relative;
+        display:inline-block;
+        width:50%;
+        height:40px;
+        vertical-align: middle;
+        text-align:right;
+      }
+      .header_icon_left{
+        display:inline-block;
+        width:49%;
+        vertical-align: middle;
+        text-align:left;
+      }
+
+      .hamburger_wrap{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 40px; /* クリックしやすいようにちゃんと幅を指定する */
+        height: 40px; /* クリックしやすいようにちゃんと高さを指定する */
+        cursor: pointer;
+        z-index: 300;
+      }
+
+      .hamburger_line{
+        position: absolute;
+        left: 11px;
+        width: 18px;
+        background-color: #111;
+        transition: all .6s;
+      }
+
+      .hamburger_line1{
+        top:10px;
+        height:3px;
+      }
+
+      .hamburger_line2{
+        top:20px;
+        height:2px;
+      }
+
+      .hamburger_line3{
+        top:30px;
+        height:3px;
+      }
+
+      .global_navi{
+         position: fixed;
+         right: -320px; /* これで隠れる */
+         top: 0;
+         width: 300px; /* スマホに収まるくらい */
+         height: 100vh;
+         padding-top: 40px;
+         background-color: #fff;
+         transition: all .6s;
+         z-index: 200;
+         overflow-y: auto; /* メニューが多くなったらスクロールできるように */
+      }
+
+      .global_nav_list{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .global_nav_item {
+        text-align: center;
+        padding: 0 14px;
+      }
+
+      .global_nav_item a {
+        display: block;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        text-decoration: none;
+        color: #111;
+      }
+
+      /* 表示された時用のCSS */
+      .navi_open .global_navi {
+        right: 0;
+      }
+      .navi_open .black-bg {
+        opacity: .8;
+        visibility: visible;
+      }
+      .navi_open .hamburger_line1 {
+        transform: rotate(45deg);
+        top: 20px;
+      }
+      .navi_open .hamburger_line2 {
+        width: 0;
+        left: 50%;
+      }
+      .navi_open .hamburger_line3 {
+        transform: rotate(-45deg);
+        top: 20px;
+      }
+
+      .fotter{
+        position: fixed;
+        bottom: 10px;
+        left: 0;
+        width:100%;
+      }
+
+      .fotter_grobal_navi{
+        margin:0 auto;
+        display:flex;
+        justify-content: space-around;
+        width:60%;
+      }
+      .fotter_navi_work{
+        display:inline-flex;
+      }
+      .fotter_navi_blog{
+        display:inline-flex;
+      }
+      .fotter_navi_about{
+        display:inline-flex;
+      }
+    </style>
+  </head>
+<body>
+<head>
+  <div class="header_container">
+    <div class="header_icon_left">
+      <a href="/" style="padding-left:10px;">Skunk Entertainment</a>
+    </div>
+    <div id="demo" class="header_icon_right" v-bind:class='{navi_open:isNaviActive}'>
+
+      <div class="hamburger_wrap" v-on:click='isNaviActive=!isNaviActive'>
+        <div class="hamburger_line hamburger_line1"></div>
+        <div class="hamburger_line hamburger_line2"></div>
+        <div class="hamburger_line hamburger_line3"></div>
+      </div>
+      <div class="global_navi">
+        <ul class="global_nav_list">
+          <li class="global_nav_item">
+            <a href="#">Profile</a>
+          </li>
+          <li class="global_nav_item">
+            <a href="#">Work</a>
+          </li>
+          <li class="global_nav_item">
+            <a href="#">Blog</a>
+          </li>
+          <li class="global_nav_item">
+            <a href="#">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</head>
+<section style="width:100%; height:100vh; position:relative;">
+  <div style="position:absolute; top:50%;left:50%;  transform: translateY(-50%) translateX(-50%); -webkit- transform: translateY(-50%) translateX(-50%);">
+    <div style="width:60%; height:auto; margin:auto; text-align:center;">
+      <img src="https://skunk-hrk.github.io/image/top_on.png" width="100%" height="auto" style="vertical-align:bottom;">
+    </div>
+  </div>
+</section>
+
+<fotter class="fotter">
+  <div class="fotter_grobal_navi">
+    <div class="fotter_navi_profile">
+      Profile
+    </div>
+    <div class="fotter_navi_work">
+      Work
+    </div>
+    <div class="fotter_navi_blog">
+      Blog
+    </div>
+    <div class="fotter_navi_about">
+      About
+    </div>
+  </div>
+</fotter>
+
+ <!--PC用jQuery-->
+ <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+ <script>
+ //import Vue from 'vue';
+ Vue.config.devtools = true;
+ console.log(Vue);
+ window.onload = function() {
+  var demo = new Vue({
+    el: '#demo',
+    data: {
+      isNaviActive: false,
+    }
+  });
+};
+ /*
+ function toggleNav() {
+    var body = document.body;
+    var hamburger = document.getElementById('js-hamburger');
+    //var blackBg = document.getElementById('js-black-bg');
+
+    hamburger.addEventListener('click', function() {
+     body.classList.toggle('nav-open');
+    });
+
+    blackBg.addEventListener('click', function() {
+     body.classList.remove('nav-open');
+    });
+
+  }
+  toggleNav();*/
+ </script>
+</body>
+</html>
