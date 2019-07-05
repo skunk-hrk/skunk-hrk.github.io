@@ -4,307 +4,145 @@
     <link href="css/reset.css" rel="stylesheet" type="text/css">
     <link href="css/animation.css" rel="stylesheet" type="text/css">
     <link href="css/common.css" rel="stylesheet" type="text/css">
-    <style>
-      .personal_balloon {
-        position: relative;
-        margin: 2em 0 2em 40px;
-        padding: 15px;
-        background: #000;
-        border-radius: 30px;
-      }
-
-      .personal_balloon:before {
-        content: "";
-        position: absolute;
-        right: -38px;
-        width: 13px;
-        height: 12px;
-        bottom: 0;
-        background: #000;
-        border-radius: 50%;
-      }
-
-      .personal_balloon:after {
-        content: "";
-        position: absolute;
-        right: -24px;
-        width: 20px;
-        height: 18px;
-        bottom: 3px;
-        background: #000;
-        border-radius: 50%;
-      }
-      .personal_balloon p {
-        margin: 0;
-        padding: 0;
-      }
-
-      .hobby_balloon {
-        position: relative;
-        margin: 2em 0 2em 40px;
-        padding: 15px;
-        background: #000;
-        border-radius: 30px;
-      }
-
-      .hobby_balloon:before {
-        content: "";
-        position: absolute;
-        right: -38px;
-        width: 13px;
-        height: 12px;
-        top: 0;
-        background: #000;
-        border-radius: 50%;
-      }
-
-      .hobby_balloon:after {
-        content: "";
-        position: absolute;
-        right: -24px;
-        width: 20px;
-        height: 18px;
-        top: 3px;
-        background: #000;
-        border-radius: 50%;
-      }
-      .hobby_balloon p {
-        margin: 0;
-        padding: 0;
-      }
-
-      .skill_balloon {
-        position: relative;
-        margin: 2em 0 2em 40px;
-        padding: 15px;
-        background: #000;
-        border-radius: 30px;
-      }
-
-      .skill_balloon:before {
-        content: "";
-        position: absolute;
-        left: -38px;
-        width: 13px;
-        height: 12px;
-        bottom: 42%;
-        background: #000;
-        border-radius: 50%;
-      }
-
-      .skill_balloon:after {
-        content: "";
-        position: absolute;
-        left: -24px;
-        width: 20px;
-        height: 18px;
-        bottom: 45%;
-        background: #000;
-        border-radius: 50%;
-      }
-      .skill_balloon p {
-        margin: 0;
-        padding: 0;
-      }
-      .bg_white{
-        background: #fff;
-      }
-
-      .web_circle{
-        display: inline-block;
-        border-radius: 50%;
-        line-height: 14vw;
-        width:14vw;
-        height:14vw;
-        background-color: red;
-        vertical-align: middle;
-      }
-
-      .design_circle{
-        display: inline-block;
-        border-radius: 50%;
-        line-height: 22vw;
-        width:22vw;
-        height:22vw;
-        background-color: red;
-        vertical-align: middle;
-      }
-
-      .unity_circle{
-        display: inline-block;
-        border-radius: 50%;
-        line-height: 18vw;
-        width:18vw;
-        height:18vw;
-        background-color: red;
-        vertical-align: middle;
-      }
-    </style>
-    <!--<script src="https://unpkg.com/vue@2.5.17"></script>-->
-    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
-    <script src="js/vue.js"></script>
-    <script src="https://unpkg.com/vue-router@3.0.1"></script>
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
   </head>
   <body>
-    <div id="wrap" class="wrapper">
+    <div id="wrap" class="wrapper top animated" style="opacity:0;">
       <header>
-        <div class="header_container">
-          <div class="header_icon_left">
-            <a href="/" style="padding-left:10px;">Skunk Entertainment</a>
-          </div>
-          <div id="grovalNavi" class="header_icon_right" v-bind:class='{navi_open:isNaviActive}'>
-
-            <div class="hamburger_wrap" v-on:click='isNaviActive=!isNaviActive'>
-              <div class="hamburger_line hamburger_line1"></div>
-              <div class="hamburger_line hamburger_line2"></div>
-              <div class="hamburger_line hamburger_line3"></div>
-            </div>
-            <div class="global_navi">
-              <ul class="global_nav_list">
-                <li class="global_nav_item" v-on:click='type="about";isNaviActive=false'>
-                  About
-                </li>
-                <li class="global_nav_item" v-on:click='type="work";isNaviActive=false'>
-                  Work
-                </li>
-                <li class="global_nav_item" v-on:click='type="service";isNaviActive=false'>
-                  Contact
-                </li>
-                <li class="global_nav_item" v-on:click='type="contact";isNaviActive=false'>
-                  Service
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <h1 style="position:absolute; font-size:small; color:darkgrey; top:5px; left:5px;">Skunk Entertainment</h1>
       </header>
 
-      <section style="width:100%; height:100vh; position:relative;">
-        <div style="position:absolute; top:50%;left:50%;  transform: translateY(-50%) translateX(-50%); -webkit- transform: translateY(-50%) translateX(-50%);">
-          <div class="animated scaleDownIn" style="width:60%; height:auto; margin:auto; text-align:center;">
-            <img src="https://skunk-hrk.github.io/image/top_on.png" width="100%" height="auto" style="vertical-align:bottom; position:relative;" v-on:click='type="default"'>
-            <template v-if="type === 'about'">
-              <!--パーソナルプロフィール-->
-              <div id="show_content" style="font-size:2vw;">
-                <div class="personal_balloon thinkingLeftUpIn" style="position:absolute; top:-40%; left:-164%; min-width: 250px;">
-                  <div>
-                    Personal Profile
-                  </div>
-                  <div>
-                      名称：SKunk<br>
-                      生年月日：1991.2.3
-                  </div>
-                </div>
-
-                <!--趣味-->
-                <div class="hobby_balloon thinkingLeftDownIn" style="position:absolute; top:40%; left:-155%; min-width: 250px;">
-                  <div>
-                    Hobby
-                  </div>
-                  <div>
-                    釣り<br>
-                    囲碁<br>
-                    将棋<br>
-                    かき氷(食べる)<br>
-                    カレー(食べる/作る)
-                  </div>
-                </div>
-
-                <!--スキル-->
-                <div class="skill_balloon thinkingRightUpIn" style="position:absolute; top:-40%; right:-135%; min-width: 250px;">
-                  <div>
-                    Hobby
-                  </div>
-                  <div>
-                    HTML + CSS：★★★★☆<br>
-                    JavaScript：★★★★☆<br>
-                    jQuery：★★★★☆<br>
-                    Photoshop：★★★★☆<br>
-                    Illustrator：★★★★☆<br>
-                    AfterEffects：★★★☆☆<br>
-                    PremirePro：★★★☆☆<br>
-                    Unity：★★☆☆☆<br>
-                    PHP：★★☆☆☆<br>
-                    MySQL：★☆☆☆☆
-                  </div>
-                </div>
-              </div>
-            </template>
-            <template v-else-if="type === 'work'">
-              <div style="font-size:2vw;">
-                <div class="web_circle animated fadeIn" style="position:absolute; top:-70%; left:-80%;">
-                    Web
-                </div>
-                <div class="design_circle animated fadeIn" style="position:absolute; top:-50%; left:115%;">
-                    Design
-                </div>
-                <div class="unity_circle animated fadeIn" style="position:absolute; top:90%; left:-80%;">
-                    Unity
-                </div>
-              </div>
-            </template>
-            <template v-else-if="type === 'service'">
-              <div style="font-size:2vw;">
-                <div class="web_circle animated fadeIn" style="position:absolute; top:-70%; left:-80%;">
-                    Stamp
-                </div>
-                <div class="design_circle animated fadeIn" style="position:absolute; top:-50%; left:115%;">
-                    App
-                </div>
-              </div>
-            </template>
-          </div>
-        </div>
-      </section>
-
-      <footer class="footer">
-        <div class="footer_grobal_navi">
-          <div class="footer_navi_contents" v-on:click='type="about"'>
+      <div id="section_wrap">
+        <div class="menu">
+          <div class="menu_contents" v-on:click='type="about"'>
             About
           </div>
-          <div class="footer_navi_contents" v-on:click='type="work"'>
+          <div class="menu_contents" v-on:click='type="work"'>
             Work
           </div>
-          <div class="footer_navi_contents" v-on:click='type="service"'>
+          <div class="menu_contents" v-on:click='type="service"'>
             Service
           </div>
-          <div class="footer_navi_contents" v-on:click='type="contact"'>
+          <div class="menu_contents" style="display:none;" v-on:click='typeChange("contact")'>
             Contact
           </div>
         </div>
-        <div class="copyright" style="text-align:center; font-size:2vw; margin:15px auto 5px; color:#798c94;">
-          ©Skunk Entertainment
-        </div>
-      </footer>
+
+        <!--この中身を変化させる。今はトップの内容を記述する-->
+        <section style="width:100%; height:100vh; position:relative;">
+          <div style="position:absolute; top:42%;left:50%;  transform: translateY(-50%) translateX(-50%); -webkit- transform: translateY(-50%) translateX(-50%);">
+            <div class="animated" v-bind:class='{scaleDownIn:ready}' style="width:60%; height:auto; margin:auto; text-align:center; opacity:0;">
+              <img src="https://skunk-hrk.github.io/image/top_on.png" width="100%" height="auto" style="vertical-align:bottom; position:relative;" v-on:click='type="default"'>
+              <div v-if="type === 'about'">
+                <!--パーソナルプロフィール-->
+                <div id="show_content" style="font-size:large;">
+                  <div class="personal_balloon thinkingLeftUpIn" style="position:absolute; top:-40%; left:-164%; min-width: 250px;">
+                    <div class="prof_title">
+                      Personal Profile
+                    </div>
+                    <div class="prof_detail">
+                        名称：SKunk<br>
+                        生年月日：1991.2.3
+                    </div>
+                  </div>
+
+                  <!--趣味-->
+                  <div class="hobby_balloon thinkingLeftDownIn" style="position:absolute; top:40%; left:-155%; min-width: 250px;">
+                    <div class="prof_title">
+                      Hobby
+                    </div>
+                    <div class="prof_detail">
+                      釣り<br>
+                      囲碁<br>
+                      将棋<br>
+                      かき氷<span style="font-size:small;">(食べる)</span><br>
+                      カレー<span style="font-size:small;">(食べる/作る)</span>
+                    </div>
+                  </div>
+
+                  <!--スキル-->
+                  <div class="skill_balloon thinkingRightUpIn" style="position:absolute; top:-40%; right:-135%; min-width: 250px;">
+                    <div class="prof_title">
+                      Skill
+                    </div>
+                    <div class="prof_detail">
+                      HTML + CSS：★★★★☆<br>
+                      JavaScript：★★★★☆<br>
+                      jQuery：★★★★☆<br>
+                      Photoshop：★★★★☆<br>
+                      Illustrator：★★★★☆<br>
+                      AfterEffects：★★★☆☆<br>
+                      PremirePro：★★★☆☆<br>
+                      Unity：★★☆☆☆<br>
+                      PHP：★★☆☆☆<br>
+                      MySQL：★☆☆☆☆
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div v-else-if="type === 'work'">
+                <div style="font-size:2vw;">
+                  <div class="web_circle animated fadeIn" style="position:absolute; top:-70%; left:-80%;">
+                      <a href="work/web.html">WebViewApp</a>
+                  </div>
+                  <div class="design_circle animated fadeIn" style="position:absolute; top:-50%; left:115%;">
+                      <a href="work/design.html">Design</a>
+                  </div>
+                  <div class="unity_circle animated fadeIn" style="position:absolute; top:90%; left:-80%;">
+                      <a href="work/unity.html">Unity</a>
+                  </div>
+                </div>
+              </div>
+              <div v-else-if="type === 'service'">
+                <div style="font-size:2vw;">
+                  <div class="web_circle animated fadeIn" style="position:absolute; top:-70%; left:-80%;">
+                      <a href="service/stamp.html">Stamp</a>
+                  </div>
+                  <div class="design_circle animated fadeIn" style="position:absolute; top:-50%; left:115%;display:none;">
+                      <a href="service/app.html">App</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+        <footer class="footer">
+          <div class="copyright" style="text-align:center; font-size:small; margin:15px auto 5px; color:darkgrey;">
+            ©Skunk Entertainment
+          </div>
+        </footer>
+
+      <!--</div>-->
     </div>
+
+   <!--<script src="js/oncssanimationend.js"></script>-->
+   <!--<script src="https://unpkg.com/vue@2.5.17"></script>-->
+   <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+   <script src="js/vue.js"></script>
+   <script src="https://unpkg.com/vue-router@3.0.1"></script>
+
    <script>
-    //import Vue from 'vue';
+     //import Vue from 'vue';
      Vue.config.devtools = true;
+     // 全体エレメントを取得
+     var wrap_el = document.getElementById("wrap");
+
+     // 全体エレメントを取得
+     var wrap_el = document.getElementById("wrap");
 
      window.onload = function() {
-      var wrap = new Vue({
-        el: '#wrap',
-        data: {
-          isNaviActive: false,
-          type: 'default',
-        },
-        methods:{
-          typeChange : function(type){
-            var _type = this.type;
-            var close_element = document.getElementById("show_content");
-            console.log(close_element);
+       wrap_el.classList.add("fadeIn");
+       var section_wrap = new Vue({
+         el:"#section_wrap",
+         data:{
+           ready: true,
+           type: 'default',
+         }
+       });
 
-            if(_type == "contact"){
-
-            } else {
-
-            }
-            this.type = type;
-          }
-        }
-      });
-
-    };
+    }
    </script>
   </body>
 </html>
