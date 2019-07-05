@@ -27,7 +27,7 @@
     //import Vue from 'vue';
      Vue.config.devtools = true;
 
-     var view = function ajax (){
+     function ajax (){
     	$.ajax({
     		url: 'test.html', //読み込むファイルを指定
     		cache: false, //キャッシュを保存するかの指定
@@ -46,6 +46,7 @@
      }
 
      window.onload = function() {
+       ajax();
        /*wrap_el.classList.add("fadeIn");
        var contents_wrap = new vue({
          el: "#contents_wrap",
