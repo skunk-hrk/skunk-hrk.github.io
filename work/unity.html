@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css">
+    <link href="../css/animation.css" rel="stylesheet" type="text/css">
+    <link href="../css/common.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+  </head>
+  <body>
+    <div id="wrap" class="wrapper animated few" style="opacity:0;">
+      <header>
+        <!--ToDo：本番ではリンク外す-->
+        <h1 style="position:absolute; font-size:small; top:5px; left:5px;"><a href="../test.html" style=" color:darkgrey;">Skunk Entertainment</a></h1>
+      </header>
+
+      <div id="section_wrap">
+        <div class="page">
+          <div class="page_contents">
+            Work
+          </div>
+        </div>
+        <template v-for="value in items">
+          <section class="content_wrap" v-bind:class="{content_even_number:value.is_even_number}">
+            <div class="content_title">{{ value.title }}</div>
+            <div class="content_detail">
+              <div class="content_whitespace">
+              </div>
+              <template v-for="img in value.img">
+                <div  class="content_img">
+                    <img :src="img" width="100%" height="auto" style="vertical-align:bottom; position:relative;">
+                </div>
+              </template>
+              <div class="content_description">
+                <div class="content_description_box">
+                  <div class="content_description_title">{{ value.title }}</div>
+                  <div>
+                    {{ value.description }}
+                    <div class="content_description_subtitle">担当業務</div>
+                    {{ value.responsible }}
+                  </div>
+                </div>
+              </div>
+              <div class="content_whitespace">
+              </div>
+            </div>
+          </section>
+        </template>
+      </div>
+    </div>
+
+  <script src="../js/vue.js"></script>
+  <script src="https://unpkg.com/vue-router@3.0.1"></script>
+  <script>
+   //import Vue from 'vue';
+    Vue.config.devtools = true;
+    // 全体エレメントを取得
+    var wrap_el = document.getElementById("wrap");
+
+    window.onload = function() {
+
+     var section_wrap = new Vue({
+       el: '#section_wrap',
+       data: {
+         items: {
+           0:{
+             is_first_content:true,
+             is_even_number:true,
+             title:"Geister",
+             responsible:"デザイン/アニメーション/C#プログラム一部",
+             description:"制作中です。2019年冬公開予定",
+             img:{
+               img1:"https://skunk-hrk.github.io/image/webviewapp/10th/top_image.png",
+               img2:"https://skunk-hrk.github.io/image/webviewapp/10th/contents1_detail1.png",
+               img3:"https://skunk-hrk.github.io/image/webviewapp/10th/contents2_detail1.png"
+             }
+           }
+         }
+       }
+     });
+
+     // ページ読み込み完了後に表示にする。mounted()使用かcreated()使用か? > 読み込みアニメーションと完了時のアニメーションを淹れたい
+     setTimeout(function(){
+       wrap_el.classList.add("fadeIn");
+     },1800);
+
+
+   };
+  </script>
+ </body>
+</html>
