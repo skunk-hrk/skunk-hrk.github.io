@@ -27,26 +27,23 @@
     //import Vue from 'vue';
      Vue.config.devtools = true;
 
-     // ajax用
-     var req = new XMLHttpRequest();
+     var view = function ajax (){
+    	$.ajax({
+    		url: 'test.html', //読み込むファイルを指定
+    		cache: false, //キャッシュを保存するかの指定
+    		success: function(html){
+          console.log(html);
+    			//データ取得後に実行する処理
+          /*
+    			$(html).find('#demo_block').each(function(){　//読み込みたい部分の指定　※今回は#demo_blockの中身のulから読み込まれる
+    				$('#info').html($(this).html()); //読み込んだ外部HTMLを表示する領域を指定
+    				return false;
+    			});
 
-     var wrap_el = document.getElementById("wrap");
-
-     req.onreadystatechange = function() {
-       var result = document.getElementById('result');
-        if (req.readyState == 4) { // 通信の完了時
-          if (req.status == 200) { // 通信の成功時
-            result.innerHTML = req.responseText;
-          }
-        }else{
-          result.innerHTML = "通信中...";
-        }
-      }
-
-      req.open('GET', 'text.html', true);
-      req.send(null);
-
-      var data = eval('(' + req.responseText + ')');
+    			$('ul li:gt(4)').remove(); //6件目以降の li を削除*/
+    		}
+    	});
+     }
 
      window.onload = function() {
        wrap_el.classList.add("fadeIn");
