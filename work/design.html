@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <link href="../css/reset.css" rel="stylesheet" type="text/css">
+    <link href="../css/animation.css" rel="stylesheet" type="text/css">
+    <link href="../css/common.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+  </head>
+  <body>
+    <div id="wrap" class="wrapper animated" style="opacity:0;">
+      <header>
+        <!--ToDo：本番ではリンク外す-->
+        <h1 style="position:absolute; font-size:small; top:5px; left:5px;"><a href="../test.html" style=" color:darkgrey;">Skunk Entertainment</a></h1>
+      </header>
+
+      <div id="section_wrap">
+        <div class="page">
+          <div class="page_contents">
+            Design
+          </div>
+        </div>
+
+        <section style="width:94vw; height:100vh;">
+          <div style="width:75%; margin:0 auto; text-align:center;">
+            <template v-for="(value, index) in items">
+              <div style="display:inline-block; width:180px;height:180px; text-align:center; font-size:large; margin-top:60px;">
+                <div style="width:160px; height:160px; margin:5px auto; overflow:hidden;" v-on:click="modal_open(index)">
+                  <img :src="value.img" width="100%" height="auto" style="vertical-align:bottom; position:relative;">
+                </div>
+                {{ value.title }}
+              </div>
+            </template>
+          </div>
+        </section>
+
+        <div style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8);" v-show="show" v-on:click="modal_close">
+        </div>
+      </div>
+
+      <div id="modal">
+        <div id="modal_wrap" class="animated fadeIn" v-show="modal_show" v-bind:class="{fadeOut:hidden}">
+          <div style="position:absolute; top:50%; left:50%; z-index: 1000; transform:translate(-50% ,-50%); width:20%; height:auto;">
+            <img v-bind:src="img" style="width:100%; height:auto; vertical-align:bottom;">
+          </div>
+        </div>
+      </div>
+
+  <script src="../js/vue.js"></script>
+  <script src="https://unpkg.com/vue-router@3.0.1"></script>
+  <script>
+   //import Vue from 'vue';
+    Vue.config.devtools = true;
+    // 全体エレメントを取得
+    var wrap_el = document.getElementById("wrap");
+
+    window.onload = function() {
+     var section_wrap = new Vue({
+       el: '#section_wrap',
+       data: {
+         show:false,
+         items:{
+           0:{title:"a",img:"https://skunk-hrk.github.io/image/webviewapp/tkgr/laboratory/detail_image1.png"},
+           1:{title:"b",img:"https://skunk-hrk.github.io/image/webviewapp/tkgr/laboratory/detail_image2.png"},
+           2:{title:"c",img:"https://skunk-hrk.github.io/image/webviewapp/tkgr/laboratory/detail_image3.png"},
+           3:{title:"d",img:"https://skunk-hrk.github.io/image/webviewapp/tkgr/laboratory/detail_image1.png"},
+           4:{title:"e",img:"https://skunk-hrk.github.io/image/webviewapp/tkgr/laboratory/detail_image2.png"},
+           5:{title:"f",img:"https://skunk-hrk.github.io/image/webviewapp/tkgr/laboratory/detail_image3.png"},
+         }
+       },
+       methods:{
+         modal_open:function(id){
+           this.show = true;
+           modal.change_img(this.items[id].img);
+           modal.show_modal();
+           //current_img = this.items[id].img;
+         },
+         modal_close: function(){
+           this.show = false;
+           modal.close_modal();
+         }
+       }
+     });
+
+     var modal = new Vue({
+       el:"#modal",
+       data:{
+         modal_show:false,
+         hidden:false,
+         img:null
+       },
+       methods:{
+         change_img : function(_img){
+           this.img = _img;
+         },
+         show_modal : function(){
+           this.modal_show = true;
+           this.hidden = false;
+         },
+         close_modal: function(){
+           this.hidden = true;
+           this.modal_show = false;
+         }
+       }
+     });
+
+     // ページ読み込み完了後に表示にする。mounted()使用かcreated()使用か? > 読み込みアニメーションと完了時のアニメーションを淹れたい
+     setTimeout(function(){
+       wrap_el.classList.add("fadeIn");
+     },1800);
+
+   };
+  </script>
+ </body>
+</html>
