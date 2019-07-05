@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/animation.css" rel="stylesheet" type="text/css">
+    <link href="css/common.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+  </head>
+  <body>
+    <div id="wrap" class="wrapper animated" style="opacity:0;">
+      <header>
+        <h1 style="font-size:small; color:darkgrey;">Skunk Entertainment</h1>
+      </header>
+
+      <template id="contents_wrap">
+
+      </template>
+    </div>
+
+   <!--<script src="js/oncssanimationend.js"></script>-->
+   <!--<script src="https://unpkg.com/vue@2.5.17"></script>-->
+   <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+   <script src="js/vue.js"></script>
+   <script src="https://unpkg.com/vue-router@3.0.1"></script>
+
+   <script>
+    //import Vue from 'vue';
+     Vue.config.devtools = true;
+
+     // ajax用
+     var req = new XMLHttpRequest();
+
+     var wrap_el = document.getElementById("wrap");
+
+     req.onreadystatechange = function() {
+       var result = document.getElementById('result');
+        if (req.readyState == 4) { // 通信の完了時
+          if (req.status == 200) { // 通信の成功時
+            result.innerHTML = req.responseText;
+          }
+        }else{
+          result.innerHTML = "通信中...";
+        }
+      }
+
+      req.open('GET', 'text.html', true);
+      req.send(null);
+
+      var data = eval('(' + req.responseText + ')');
+
+     window.onload = function() {
+       wrap_el.classList.add("fadeIn");
+       var contents_wrap = new vue({
+         el: "#contents_wrap",
+         data:{
+
+         }
+       })
+
+/*
+      var wrap = new Vue({
+        el: '#wrap',
+        data: {
+          ready: true,
+          in_animation:true,
+          isNaviActive: false,
+          type: 'default',
+        },
+        methods:{
+          // ToDo コンタクト機能はまだ必要ない
+          typeChange : function(type){
+            var _type = this.type;
+            var close_element = document.getElementById("show_content");
+            console.log(close_element);
+
+            // 現在コンタクトを選択　かつ　現在と変更先が違う場合
+            if(_type == "contact" && _type != type){
+              console.log("test1");
+
+            // コンタクトを選択する場合
+            } else if(type == "contact") {
+              console.log("test2");
+
+           // それ以外
+            } else {
+              console.log("test3");
+            }
+            this.type = type;
+          }
+        }
+      });*/
+
+      setTimeout(function(){
+        wrap.in_animation = false;
+      },600)
+
+    };
+   </script>
+  </body>
+</html>
