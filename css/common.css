@@ -340,21 +340,18 @@ html,body {
 
 /**webviewappぺーじ用**/
 .content_img{
-  display:flex-box;
   min-width:60px;
   margin:auto;
   width:60%;
 }
 
 .content_description{
-  display:flex-box;
   width:100%;
   align-self :center;
   grid-column: 1 / 4;
 }
 
 .content_whitespace{
-  display:flex-box;
   width:8%;
 }
 
