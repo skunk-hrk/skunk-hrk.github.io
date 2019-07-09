@@ -1,404 +1,114 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu:700&display=swap');
-html,body {
-  font-family: 'Ubuntu', 'M+ Type-1 (general-j) bold', sans-serif;
-      font-size: 3.2vw;
-  }
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+    <link href="../css/reset.css" rel="stylesheet" type="text/css">
+    <link href="../css/animation.css" rel="stylesheet" type="text/css">
+    <link href="../css/common.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+  </head>
+  <body>
+    <div id="wrap" class="wrapper animated" style="opacity:0;">
+      <header>
+        <!--ToDo：本番ではリンク外す-->
+        <h1 style="position:absolute; font-size:small; top:5px; left:5px;"><a href="../test.html" style=" color:darkgrey;">Skunk Entertainment</a></h1>
+      </header>
 
-  .wrapper{
-      color:#0d4c6b;
-      background:rgba(240,240,240,0.5);
-  }
+      <div id="section_wrap">
+        <div class="page">
+          <div class="page_contents">
+            Work
+          </div>
+        </div>
+        <template v-for="value in items">
+          <section class="content_wrap" v-bind:class="{content_even_number:value.is_even_number}">
+            <div class="content_title">{{ value.title }}</div>
+            <div class="content_detail">
+              <div class="content_whitespace">
+              </div>
+              <template v-for="img in value.img">
+                <div  class="content_img">
+                    <img :src="img" width="100%" height="auto" style="vertical-align:bottom; position:relative;">
+                </div>
+              </template>
+              <div class="content_description">
+                <div class="content_description_box">
+                  <div class="content_description_title">{{ value.title }}</div>
+                  <div>
+                    {{ value.description }}
+                    <div class="content_description_subtitle">担当業務</div>
+                    {{ value.responsible }}
+                  </div>
+                </div>
+              </div>
+              <div class="content_whitespace">
+              </div>
+            </div>
+          </section>
+        </template>
+      </div>
+    </div>
 
-  .wrapper.top{
-    background: -moz-radial-gradient(#fff 20%, #eeeef4 90%);
-    background: -webkit-radial-gradient(#fff 20%, #eeeef4 90%);
-    background: radial-gradient(#fff 20%, #eeeef4 90%);
-  }
+  <script src="../js/vue.js"></script>
+  <script src="https://unpkg.com/vue-router@3.0.1"></script>
+  <script>
+   //import Vue from 'vue';
+    Vue.config.devtools = true;
+    // 全体エレメントを取得
+    var wrap_el = document.getElementById("wrap");
 
-  .wrapper.few{
-    width:100vw;
-    height:100vh;
-  }
+    window.onload = function() {
 
-  a{
-    text-decoration: none;
-    color:#0d4c6b;
-  }
+     var section_wrap = new Vue({
+       el: '#section_wrap',
+       data: {
+         items: {
+           0:{
+             is_first_content:true,
+             is_even_number:true,
+             title:"10周年企画",
+             responsible:"デザイン/HTML+CSSコーディング/jQueryプログラム/動画編集",
+             description:"WebViewアプリゲーム10周年記念の企画ページです。",
+             img:{
+               img1:"https://skunk-hrk.github.io/image/webviewapp/10th/top.png",
+               img2:"https://skunk-hrk.github.io/image/webviewapp/10th/content1.png",
+               img3:"https://skunk-hrk.github.io/image/webviewapp/10th/content2.png"
+             }
+           },
+           1:{
+             is_first_content:false,
+             is_even_number:false,
+             title:"バトルロワイヤル",
+             responsible:"デザイン/HTML+CSSレイアウト/jQuery+CSS3アニメーション",
+             description:"WebViewアプリゲーム内で初のPvP型コンテンツです。",
+             img:{
+               img1:"https://skunk-hrk.github.io/image/webviewapp/tkgr/battleroyal/top.png",
+               img2:"https://skunk-hrk.github.io/image/webviewapp/tkgr/battleroyal/battle.png",
+               img3:"https://skunk-hrk.github.io/image/webviewapp/tkgr/battleroyal/organization.png"
+             }
+           },
+           2:{
+             is_first_content:false,
+             is_even_number:true,
+             title:"研究所ページ",
+             responsible:"デザイン/HTML+CSSレイアウト/jQuery+CSS3アニメーション",
+             description:"既存コンテンツがフィーチャーフォンサイトだったので、スマートフォンにも対応できるようにリニューアルを行いました。",
+             img:{
+               img1:"https://skunk-hrk.github.io/image/webviewapp/tkgr/laboratory/top.png",
+               img2:"https://skunk-hrk.github.io/image/webviewapp/tkgr/laboratory/detail.png",
+             }
+           }
+         }
+       }
+     });
 
-  .pointevent_none {
-    pointer-events: none;
-  }
-
-.header_container{
-  position:fixed;
-  width:100%;
-  background-color: rgba(255,255,255,0.5);
-  z-index:1000;
-  top:0;
-  left:0;
-}
-
-.scroll .header_container {
-  position: fixed;
-  top:0;
-  left:0;
-  background-color:rgba(0.6,0.6,0.6,0.8);
-}
-
-.header_icon_right{
-  position:relative;
-  display:inline-block;
-  width:50%;
-  height:40px;
-  vertical-align: middle;
-  text-align:right;
-}
-.header_icon_left{
-  display:inline-block;
-  width:49%;
-  vertical-align: middle;
-  text-align:left;
-}
-
-.hamburger_wrap{
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 40px; /* クリックしやすいようにちゃんと幅を指定する */
-  height: 40px; /* クリックしやすいようにちゃんと高さを指定する */
-  cursor: pointer;
-  z-index: 300;
-}
-
-.hamburger_line{
-  position: absolute;
-  left: 11px;
-  width: 18px;
-  background-color: #0d4c6b;
-  transition: all .6s;
-}
-
-.hamburger_line1{
-  top:10px;
-  height:3px;
-}
-
-.hamburger_line2{
-  top:20px;
-  height:2px;
-}
-
-.hamburger_line3{
-  top:30px;
-  height:3px;
-}
-
-.global_navi{
-   position: fixed;
-   right: -320px; /* これで隠れる */
-   top: 0;
-   width: 300px; /* スマホに収まるくらい */
-   height: 100vh;
-   padding-top: 40px;
-   background-color: #fff;
-   transition: all .6s;
-   z-index: 200;
-   overflow-y: auto; /* メニューが多くなったらスクロールできるように */
-}
-
-.global_nav_list{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.global_nav_item {
-  text-align: center;
-  padding: 0 14px;
-}
-
-.global_nav_item a {
-  display: block;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-  text-decoration: none;
-  color: #111;
-}
-
-/* 表示された時用のCSS */
-.navi_open .global_navi {
-  right: 0;
-}
-.navi_open .black-bg {
-  opacity: .8;
-  visibility: visible;
-}
-.navi_open .hamburger_line1 {
-  transform: rotate(45deg);
-  top: 20px;
-}
-.navi_open .hamburger_line2 {
-  width: 0;
-  left: 50%;
-}
-.navi_open .hamburger_line3 {
-  transform: rotate(-45deg);
-  top: 20px;
-}
-
-.footer{
-  position: fixed;
-  font-size: 2.8vw;
-  bottom: 10px;
-  left: 0;
-  width:100%;
-}
-
-.menu{
-  margin-right:0;
-  margin-left:auto;
-  padding-top: 5px;
-  padding-right: 5px;
-  font-size: 2vw;
-  display:flex;
-  justify-content: space-around;
-  width:24%;
-}
-.menu_contents{
-  display:inline-flex;
-}
-
-.page{
-  margin-right:0;
-  margin-left:auto;
-  padding-top: 5px;
-  padding-right: 5px;
-  font-size: 2vw;
-  display:flex;
-  justify-content: space-around;
-  width:10%;
-}
+     // ページ読み込み完了後に表示にする。mounted()使用かcreated()使用か? > 読み込みアニメーションと完了時のアニメーションを淹れたい
+     setTimeout(function(){
+       wrap_el.classList.add("fadeIn");
+     },1800);
 
 
-
-/**topページ用**/
-.personal_balloon {
-  position: relative;
-  margin: 2em 0 2em 40px;
-  padding: 15px;
-  background: #e5f6ff;
-  box-shadow: 4px 4px 2px rgba(10,10,10,0.1);
-  border-radius: 30px;
-}
-
-.prof_title{
-  padding:0 0 5px 0;
-}
-
-.prof_detail{
-  font-size:medium;
-  line-height:1.1;
-}
-
-.personal_balloon:before {
-  content: "";
-  position: absolute;
-  right: -38px;
-  width: 13px;
-  height: 12px;
-  bottom: 0;
-  background: #e5f6ff;
-  border-radius: 50%;
-  box-shadow: 2px 2px 2px rgba(10,10,10,0.1);
-}
-
-.personal_balloon:after {
-  content: "";
-  position: absolute;
-  right: -24px;
-  width: 20px;
-  height: 18px;
-  bottom: 3px;
-  background: #e5f6ff;
-  border-radius: 50%;
-  box-shadow: 2px 2px 2px rgba(10,10,10,0.1);
-}
-.personal_balloon p {
-  margin: 0;
-  padding: 0;
-}
-
-.hobby_balloon {
-  position: relative;
-  margin: 2em 0 2em 40px;
-  padding: 15px;
-  background: #e5f6ff;
-  box-shadow: 4px 4px 2px rgba(10,10,10,0.1);
-  border-radius: 30px;
-}
-
-.hobby_balloon:before {
-  content: "";
-  position: absolute;
-  right: -38px;
-  width: 13px;
-  height: 12px;
-  top: 0;
-  background: #e5f6ff;
-  box-shadow: 2px 2px 2px rgba(10,10,10,0.1);
-  border-radius: 50%;
-}
-
-.hobby_balloon:after {
-  content: "";
-  position: absolute;
-  right: -24px;
-  width: 20px;
-  height: 18px;
-  top: 3px;
-  background: #e5f6ff;
-  box-shadow: 2px 2px 2px rgba(10,10,10,0.1);
-  border-radius: 50%;
-}
-.hobby_balloon p {
-  margin: 0;
-  padding: 0;
-}
-
-.skill_balloon {
-  position: relative;
-  margin: 2em 0 2em 40px;
-  padding: 15px;
-  background: #e5f6ff;
-  box-shadow: 4px 4px 2px rgba(10,10,10,0.1);
-  border-radius: 30px;
-}
-
-.skill_balloon:before {
-  content: "";
-  position: absolute;
-  left: -38px;
-  width: 13px;
-  height: 12px;
-  bottom: 42%;
-  background: #e5f6ff;
-  box-shadow: 2px 2px 2px rgba(10,10,10,0.1);
-  border-radius: 50%;
-}
-
-.skill_balloon:after {
-  content: "";
-  position: absolute;
-  left: -24px;
-  width: 20px;
-  height: 18px;
-  bottom: 45%;
-  background: #e5f6ff;
-  box-shadow: 2px 2px 2px rgba(10,10,10,0.1);
-  border-radius: 50%;
-}
-.skill_balloon p {
-  margin: 0;
-  padding: 0;
-}
-.bg_white{
-  background: #fff;
-}
-
-.web_circle{
-  display: inline-block;
-  border-radius: 50%;
-  line-height: 14vw;
-  width:14vw;
-  height:14vw;
-  background-color: #e5f6ff;
-  box-shadow: inset -50px -50px 50px rgba(100,100,200,0.1);
-  vertical-align: middle;
-}
-
-.design_circle{
-  display: inline-block;
-  border-radius: 50%;
-  line-height: 22vw;
-  width:22vw;
-  height:22vw;
-  background-color: #e5f6ff;
-  box-shadow: inset -50px -50px 50px rgba(100,100,200,0.1);
-  vertical-align: middle;
-}
-
-.unity_circle{
-  display: inline-block;
-  border-radius: 50%;
-  line-height: 18vw;
-  width:18vw;
-  height:18vw;
-  background-color: #e5f6ff;
-  box-shadow: inset -50px -50px 50px rgba(100,100,200,0.1);
-  vertical-align: middle;
-}
-
-/**webviewappぺーじ用**/
-.content_img{
-  display:flex-box;
-  min-width:60px;
-  width:12%;
-}
-
-.content_description{
-  display:flex-box;
-  width:20%;
-  align-self :center;
-}
-
-.content_whitespace{
-  display:flex-box;
-  width:8%;
-}
-
-.content_wrap{
-  width:100%;
-  background:linear-gradient(90deg, #8695a9 20%, #c4c4d3);;
-  box-sizing:border-box;
-  padding:60px 0 20px;
-  padding:20px 0;
-}
-
-.first_content{
-  padding:60px 0 20px;
-}
-
-.content_title{
-  font-size: medium;
-  margin:-6px auto 10px 18px;
-}
-
-.content_detail{
-  display:flex;
-  justify-content:space-around;
-  align-items: center;
-}
-
-.content_even_number{
-  background:linear-gradient(90deg, #c6cbd1, #fdfdff);
-}
-
-.content_description_box{
-  font-size:small;
-  font-family:'M+ C Type-1 (basic latin) Light', 'M+ Type-1 (general-j) Light';
-  width:100%;
-  height:50%;
-  background:rgba(255,255,255,0.5);
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-  padding:10px;
-}
-
-.content_description_title{
-  font-size:small;
-  margin-bottom:3px;
-}
-
-.content_description_subtitle{
-  font-size:small;
-  margin:10px 0 3px;
-}
+   };
+  </script>
+ </body>
+</html>
