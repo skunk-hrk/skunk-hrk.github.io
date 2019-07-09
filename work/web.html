@@ -24,8 +24,8 @@
           <section class="content_wrap" v-bind:class="{content_even_number:value.is_even_number}">
             <div class="content_title">{{ value.title }}</div>
             <div class="content_detail">
-              <div class="content_whitespace">
-              </div>
+              <!--<div class="content_whitespace">
+              </div>-->
               <template v-for="img in value.img">
                 <div  class="content_img">
                     <img :src="img" width="100%" height="auto" style="vertical-align:bottom; position:relative;">
@@ -34,15 +34,15 @@
               <div class="content_description">
                 <div class="content_description_box">
                   <div class="content_description_title">{{ value.title }}</div>
-                  <div>
+                  <div style="padding: 10px;">
                     {{ value.description }}
                     <div class="content_description_subtitle">担当業務</div>
                     {{ value.responsible }}
                   </div>
                 </div>
               </div>
-              <div class="content_whitespace">
-              </div>
+              <!--<div class="content_whitespace">
+              </div>-->
             </div>
           </section>
         </template>
