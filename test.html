@@ -14,125 +14,159 @@
       </header>
 
       <div id="section_wrap">
-        <div class="menu">
-          <div class="menu_contents" v-on:click='type="about"'>
-            About
+        <section style="width:100%; height:100vh; position:relative;">
+        <div class="bg_icon" style="width:60%; height:70%; margin:auto; background-color: rgba(0,0,0,0.6); -webkit-mask-image: url('https://skunk-hrk.github.io/image/icon_skunk.svg'); mask-image: url('https://skunk-hrk.github.io/image/icon_skunk.svg'); -webkit-mask-size: 80% 80%; mask-size: 80% 80%; -webkit-mask-position:no-repeat; mask-position:50%; -webkit-mask-repeat:50%; mask-repeat:no-repeat;" v-on:click='type="default", menu_select=false'></div>
+        <div style="position:relative; width:100%; height:30%;">
+          <div id="type_default" v-if="!menu_select">
+            <ul style="font-size:2vw; position:absolute; top:30%; left:0; list-style-type:none; width:100%; display:flex; justify-content: space-around; ">
+              <li style="display:inline-block; width:30%; position:relative;">
+                <div class="animated fadeIn option_wrap option_left" v-on:click='typeChange("about")'>
+                  <div class="option_char">
+                    about
+                  </div>
+                  <div class="rotate circle">
+                  </div>
+                  <div class="rotate2 circle">
+                  </div>
+                  <div class="rotate3 circle">
+                  </div>
+                </div>
+              </li>
+              <li style="display:inline-block; width:30%; position:relative;">
+                <div class="animated fadeIn option_wrap option_center" v-on:click='typeChange("work")'>
+                  <div class="option_char">
+                    Work
+                  </div>
+                  <div class="rotate circle">
+                  </div>
+                  <div class="rotate2 circle">
+                  </div>
+                  <div class="rotate3 circle">
+                  </div>
+                </div>
+              </li>
+              <li style="display:inline-block; width:30%; position:relative;">
+                <div class="animated fadeIn option_wrap option_right" v-on:click='typeChange("service")'>
+                  <div class="option_char">
+                    Service
+                  </div>
+                  <div class="rotate circle">
+                  </div>
+                  <div class="rotate2 circle">
+                  </div>
+                  <div class="rotate3 circle">
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
-          <div class="menu_contents" v-on:click='type="work"'>
-            Work
+          <div id="type_work" v-if="type === 'work' && menu_select">
+            <ul style="font-size:2vw; position:absolute; top:30%; left:0; list-style-type:none; width:100%; display:flex; justify-content: space-around; ">
+              <li style="display:inline-block; width:30%; position:relative;">
+                <div class="animated fadeIn option_wrap option_left" v-on:click='modalOpen("webviewapp")'>
+                  <div class="option_char">
+                    WebView<br>App
+                  </div>
+                  <div class="rotate circle">
+                  </div>
+                  <div class="rotate2 circle">
+                  </div>
+                  <div class="rotate3 circle">
+                  </div>
+                </div>
+              </li>
+              <li style="display:inline-block; width:30%; position:relative;">
+                <div class="animated fadeIn option_wrap option_center" v-on:click='modalOpen("design")'>
+                  <div class="option_char">
+                    Design
+                  </div>
+                  <div class="rotate circle">
+                  </div>
+                  <div class="rotate2 circle">
+                  </div>
+                  <div class="rotate3 circle">
+                  </div>
+                </div>
+              </li>
+              <li style="display:inline-block; width:30%; position:relative;">
+                <div class="animated fadeIn option_wrap option_right" v-on:click='modalOpen("unity")'>
+                  <div class="option_char">
+                    Unity
+                  </div>
+                  <div class="rotate circle">
+                  </div>
+                  <div class="rotate2 circle">
+                  </div>
+                  <div class="rotate3 circle">
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
-          <div class="menu_contents" v-on:click='type="service"'>
-            Service
-          </div>
-          <div class="menu_contents" style="display:none;" v-on:click='typeChange("contact")'>
-            Contact
+          <div id="type_service" v-else-if="type === 'service' && menu_select">
+            <ul style="font-size:2vw; position:absolute; top:30%; left:0; list-style-type:none; width:100%; display:flex; justify-content: space-around; ">
+              <li style="display:inline-block; width:30%; position:relative;">
+                <div class="animated fadeIn option_wrap option_left" v-on:click='modalOpen("LineStamp")'>
+                  <div class="option_char">
+                    LineStamp
+                  </div>
+                  <div class="rotate circle">
+                  </div>
+                  <div class="rotate2 circle">
+                  </div>
+                  <div class="rotate3 circle">
+                  </div>
+                </div>
+              </li>
+              <li style="display:inline-block; width:30%; position:relative;">
+                <div class="animated fadeIn option_wrap option_center" v-on:click='modalOpen("StampPaste")'>
+                  <div class="option_char">
+                    StampPaste
+                  </div>
+                  <div class="rotate circle">
+                  </div>
+                  <div class="rotate2 circle">
+                  </div>
+                  <div class="rotate3 circle">
+                  </div>
+                </div>
+              </li>
+              <li style="display:inline-block; width:30%; position:relative;">
+                <div class="animated fadeIn option_wrap option_right" v-on:click='modalOpen("Game")'>
+                  <div class="option_char">
+                    Game
+                  </div>
+                  <div class="rotate circle">
+                  </div>
+                  <div class="rotate2 circle">
+                  </div>
+                  <div class="rotate3 circle">
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <!--この中身を変化させる。今はトップの内容を記述する-->
-        <section style="width:100%; height:100vh; position:relative;">
-          <div style="position:absolute; top:42%;left:50%;  transform: translateY(-50%) translateX(-50%); -webkit- transform: translateY(-50%) translateX(-50%);">
-            <div class="animated" v-bind:class='{scaleDownIn:ready}' style="width:60%; height:auto; margin:auto; text-align:center; opacity:0;">
-              <img src="https://skunk-hrk.github.io/image/top_off.png" width="100%" height="auto" style="vertical-align:bottom; position:relative;" v-on:click='type="default"'>
-              <div v-if="type === 'about'">
-                <!--パーソナルプロフィール-->
-                <div id="show_content" style="font-size:large;">
-                  <div class="personal_balloon thinkingLeftUpIn" style="position:absolute; top:-40%; left:-164%; min-width: 250px;">
-                    <div class="prof_title">
-                      Personal Profile
-                    </div>
-                    <div class="prof_detail">
-                        名称：SKunk<br>
-                        生年月日：1991.2.3
-                    </div>
-                  </div>
-
-                  <!--趣味-->
-                  <div class="hobby_balloon thinkingLeftDownIn" style="position:absolute; top:40%; left:-155%; min-width: 250px;">
-                    <div class="prof_title">
-                      Hobby
-                    </div>
-                    <div class="prof_detail">
-                      釣り<br>
-                      囲碁<br>
-                      将棋<br>
-                      かき氷<span style="font-size:small;">(食べる)</span><br>
-                      カレー<span style="font-size:small;">(食べる/作る)</span>
-                    </div>
-                  </div>
-
-                  <!--スキル-->
-                  <div class="skill_balloon thinkingRightUpIn" style="position:absolute; top:-40%; right:-135%; min-width: 250px;">
-                    <div class="prof_title">
-                      Skill
-                    </div>
-                    <div class="prof_detail">
-                      HTML + CSS：★★★★☆<br>
-                      JavaScript：★★★★☆<br>
-                      jQuery：★★★★☆<br>
-                      Photoshop：★★★★☆<br>
-                      Illustrator：★★★★☆<br>
-                      AfterEffects：★★★☆☆<br>
-                      PremirePro：★★★☆☆<br>
-                      Unity：★★☆☆☆<br>
-                      PHP：★★☆☆☆<br>
-                      MySQL：★☆☆☆☆
-                    </div>
-                  </div>
-                </div>
-              </div>
-                <ul style="font-size:2vw; position:absolute; top:108%; left:-50%; list-style-type:none; width:200%; display:flex; justify-content: space-around; " v-else-if="type === 'work'">
-                  <li style="display:inline-block; width:30%;">
-                    <a href="work/web.html">
-                      <div class="web_circle animated fadeIn" style="position:relative;">
-                          WebViewApp
-                          <div style="position:absolute; top:1px; left:1px; width:100%; height:100%; border:1px solid; border-radius:50%;">
-                          </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li style="display:inline-block; width:30%;">
-                    <a href="work/design.html">
-                      <div class="design_circle animated fadeIn" style="position:relative;">
-                          Design
-                      </div>
-                    </a>
-                  </li>
-                  <li style="display:inline-block; width:30%;">
-                    <a href="work/unity.html">
-                      <div class="unity_circle animated fadeIn" style="position:relative;">
-                          Unity
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              <div v-else-if="type === 'service'">
-                <div style="font-size:2vw;">
-                  <div class="web_circle animated fadeIn" style="position:absolute; top:-70%; left:-80%;">
-                      <a href="service/stamp.html">Stamp</a>
-                  </div>
-                  <div class="design_circle animated fadeIn" style="position:absolute; top:-50%; left:115%;display:none;">
-                      <a href="service/app.html">App</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-        <footer class="footer">
-          <div class="copyright" style="text-align:center; font-size:small; margin:15px auto 5px; color:darkgrey;">
-            ©Skunk Entertainment
-          </div>
-        </footer>
-
-      <!--</div>-->
+        <div style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8);" v-show="show_modal_bg" v-on:click="modalClose">
+        </div>
+      </section>
     </div>
 
-   <!--<script src="js/oncssanimationend.js"></script>-->
-   <!--<script src="https://unpkg.com/vue@2.5.17"></script>-->
-   <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+    <footer class="footer">
+      <div class="copyright" style="text-align:center; font-size:small; margin:15px auto 5px; color:darkgrey;">
+        2019 Skunk Entertainment
+      </div>
+    </footer>
+
+    <div id="modal">
+      <div id="modal_wrap" class="animated fadeIn" v-show="modal_show" v-bind:class="{fadeOut:hidden}">
+        <div style="position:absolute; top:50%; left:50%; z-index: 1000; transform:translate(-50% ,-50%); min-width: 160px; width:20%; height:auto;">
+          aiueo
+        </div>
+      </div>
+    </div>
+
    <script src="js/vue.js"></script>
    <script src="https://unpkg.com/vue-router@3.0.1"></script>
 
@@ -152,6 +186,45 @@
          data:{
            ready: true,
            type: 'default',
+           menu_select:false,
+           show_modal_bg:false,
+         },
+         methods:{
+           typeChange:function(_type){
+             this.menu_select = true;
+             this.type = _type;
+           },
+           modalOpen:function(_contents_type){
+             console.log("modalOpen")
+             this.show_modal_bg = true;
+             modal.show_modal(_contents_type);
+           },
+           modalClose:function(){
+             this.show_modal_bg = false;
+             console.log("modalClose");
+           }
+         }
+       });
+
+       var modal = new Vue({
+         el:"#modal",
+         data:{
+           modal_show:false,
+           hidden:false,
+           img:null
+         },
+         methods:{
+           change_img : function(_img){
+             this.img = _img;
+           },
+           show_modal : function(){
+             this.modal_show = true;
+             this.hidden = false;
+           },
+           close_modal: function(){
+             this.hidden = true;
+             this.modal_show = false;
+           }
          }
        });
 
