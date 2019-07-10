@@ -7,6 +7,108 @@
  *
  * Copyright (c) 2019 Daniel Eden
  */
+ @-webkit-keyframes rotate3 {
+   0% {
+     -webkit-transform: rotate(360deg) translateX(8%) rotate(-360deg);
+     transform: rotate(360deg) translateX(8%) rotate(-360deg);
+   }
+     100% {
+     -webkit-transform: rotate(0deg) translateX(8%) rotate(0deg);
+     transform: rotate(0deg) translateX(8%) rotate(0deg);
+   }
+ }
+
+ @keyframes rotate3 {
+   0% {
+     -webkit-transform: rotate(360deg) translateX(8%) rotate(-360deg);
+     transform: rotate(360deg) translateX(8%) rotate(-360deg);
+   }
+     100% {
+     -webkit-transform: rotate(0deg) translateX(8%) rotate(0deg);
+     transform: rotate(0deg) translateX(8%) rotate(0deg);
+   }
+ }
+
+ .rotate3 {
+   -webkit-animation-name: rotate3;
+   animation-name: rotate3;
+   animation-duration: 8s;
+   -webkit-animation-duration: 8s;
+   animation-timing-function:linear;
+   -webkit-animation-timing-function:linear;
+   -webkit-transform-origin: center bottom;
+   transform-origin: center bottom;
+   -webkit-animation-iteration-count: infinite;
+   animation-iteration-count: infinite;
+ }
+ @-webkit-keyframes rotate2 {
+   0% {
+     -webkit-transform: rotate(0deg) translateY(6%) rotate(0deg);
+     transform: rotate(0deg) translateY(6%) rotate(0deg);
+   }
+     100% {
+     -webkit-transform: rotate(360deg) translateY(6%) rotate(-360deg);
+     transform: rotate(360deg) translateY(6%) rotate(-360deg);
+   }
+ }
+
+ @keyframes rotate2 {
+   0% {
+     -webkit-transform: rotate(0deg) translateY(6%) rotate(0deg);
+     transform: rotate(0deg) translateY(6%) rotate(0deg);
+   }
+     100% {
+     -webkit-transform: rotate(360deg) translateY(6%) rotate(-360deg);
+     transform: rotate(360deg) translateY(6%) rotate(-360deg);
+   }
+ }
+
+ .rotate2 {
+   -webkit-animation-name: rotate2;
+   animation-name: rotate2;
+   animation-duration: 8s;
+   -webkit-animation-duration: 8s;
+   animation-timing-function:linear;
+   -webkit-animation-timing-function:linear;
+   -webkit-transform-origin: center bottom;
+   transform-origin: center bottom;
+   -webkit-animation-iteration-count: infinite;
+   animation-iteration-count: infinite;
+ }
+ @-webkit-keyframes rotate {
+   0% {
+     -webkit-transform: rotate(0deg) translateY(-4%) rotate(0deg);
+     transform: rotate(0deg) translateY(-4%) rotate(0deg);
+   }
+     100% {
+     -webkit-transform: rotate(360deg) translateY(-4%) rotate(-360deg);
+     transform: rotate(360deg) translateY(-4%) rotate(-360deg);
+   }
+ }
+
+ @keyframes rotate {
+   0% {
+     -webkit-transform: rotate(0deg) translateY(-4%) rotate(0deg);
+     transform: rotate(0deg) translateY(-4%) rotate(0deg);
+   }
+     100% {
+     -webkit-transform: rotate(360deg) translateY(-4%) rotate(-360deg);
+     transform: rotate(360deg) translateY(-4%) rotate(-360deg);
+   }
+ }
+
+ .rotate {
+   -webkit-animation-name: rotate;
+   animation-name: rotate;
+   animation-duration: 8s;
+   -webkit-animation-duration: 8s;
+   animation-timing-function:linear;
+   -webkit-animation-timing-function:linear;
+   -webkit-transform-origin: center bottom;
+   transform-origin: center bottom;
+   -webkit-animation-iteration-count: infinite;
+   animation-iteration-count: infinite;
+ }
 
 @-webkit-keyframes thinkingLeftUpIn {
   from{
@@ -144,7 +246,7 @@
 }
 
  @-webkit-keyframes scaleDownIn {
-   from {
+   0% {
      opacity: 0;
      -webkit-transform: scale3d(1.3, 1.3, 1.3);
      transform: scale3d(1.3, 1.3, 1.3);
@@ -153,14 +255,14 @@
    50% {
      opacity: 1;
    }
-   
-   to {
+
+   100% {
      opacity: 1;
    }
  }
 
  @keyframes scaleDownIn {
-   from {
+   0% {
      opacity: 0;
      -webkit-transform: scale3d(1.3, 1.3, 1.3);
      transform: scale3d(1.3, 1.3, 1.3);
@@ -169,8 +271,8 @@
    50% {
      opacity: 1;
    }
-   
-   to {
+
+   100% {
      opacity: 1;
    }
  }
@@ -3731,8 +3833,8 @@
 }
 
 .animated {
-  -webkit-animation-duration: .5s;
-  animation-duration: .5s;
+  -webkit-animation-duration: 2.5s;
+  animation-duration: 2.5s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
