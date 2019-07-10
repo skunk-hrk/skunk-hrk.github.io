@@ -9,12 +9,12 @@
   </head>
   <body>
     <div id="wrap" class="wrapper top animated" style="opacity:0;">
-      <header>
+      <header style="opacity:0;">
         <h1 style="position:absolute; font-size:small; color:#1e5772; top:5px; left:5px;">Skunk Entertainment</h1>
       </header>
 
       <div id="section_wrap">
-        <section style="width:100%; height:100vh; position:relative;">
+        <section style="width:100%; height:100vh; position:relative; z-index:500;">
         <div class="bg_icon" style="width:60%; height:70%; margin:auto; background-color: rgba(0,0,0,0.6); -webkit-mask-image: url('https://skunk-hrk.github.io/image/icon_skunk.svg'); mask-image: url('https://skunk-hrk.github.io/image/icon_skunk.svg'); -webkit-mask-size: 80% 80%; mask-size: 80% 80%; -webkit-mask-position:no-repeat; mask-position:50%; -webkit-mask-repeat:50%; mask-repeat:no-repeat;" v-on:click='type="default", menu_select=false'></div>
         <div style="position:relative; width:100%; height:30%;">
           <div id="type_default" v-if="!menu_select">
@@ -148,21 +148,43 @@
           </div>
         </div>
 
-        <div style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8);" v-show="show_modal_bg" v-on:click="modalClose">
+        <div style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:100;" v-show="show_modal_bg" v-on:click="modalClose">
         </div>
       </section>
     </div>
 
     <footer class="footer">
-      <div class="copyright" style="text-align:center; font-size:small; margin:15px auto 5px; color:darkgrey;">
+      <div class="copyright" style="position:fixed; bottom: 10px; left: 0; right:0; text-align:center; font-size:small; margin:15px auto 5px; color:darkgrey;">
         2019 Skunk Entertainment
       </div>
     </footer>
 
-    <div id="modal">
+    <div id="modal" style="position:relative; z-index:1000;">
       <div id="modal_wrap" class="animated fadeIn" v-show="modal_show" v-bind:class="{fadeOut:hidden}">
-        <div style="position:absolute; top:50%; left:50%; z-index: 1000; transform:translate(-50% ,-50%); min-width: 160px; width:20%; height:auto;">
-          aiueo
+        <div style="position:fixed; top:50%; left:50%; overflow-y: scroll; z-index: 1000; transform:translate(-50% ,-50%); min-width: 160px; width:90%; height:90%;">
+          <div v-for="value in items">
+            <div class="content_wrap" v-bind:class="{content_even_number:value.is_even_number}">
+              <div class="content_title">{{ value.title }}</div>
+              <div class="content_detail">
+
+                <div v-for="img in value.img">
+                  <div  class="content_img">
+                      <img :src="img" width="100%" height="auto" style="vertical-align:bottom; position:relative;">
+                  </div>
+                </div>
+                <div class="content_description">
+                  <div class="content_description_box">
+                    <div class="content_description_title">{{ value.title }}</div>
+                    <div style="padding: 10px;">
+                      {{ value.description }}
+                      <div class="content_description_subtitle">担当業務</div>
+                      {{ value.responsible }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -211,7 +233,45 @@
          data:{
            modal_show:false,
            hidden:false,
-           img:null
+           img:null,
+           items: {
+             0:{
+               is_first_content:true,
+               is_even_number:true,
+               title:"10周年企画",
+               responsible:"デザイン/HTML+CSSコーディング/jQueryプログラム/動画編集",
+               description:"WebViewアプリゲーム10周年記念の企画ページです。",
+               img:{
+                 img1:"https://skunk-hrk.github.io/image/webviewapp/10th/top.png",
+                 img2:"https://skunk-hrk.github.io/image/webviewapp/10th/content1.png",
+                 img3:"https://skunk-hrk.github.io/image/webviewapp/10th/content2.png"
+               }
+             },
+             1:{
+               is_first_content:false,
+               is_even_number:false,
+               title:"バトルロワイヤル",
+               responsible:"デザイン/HTML+CSSレイアウト/jQuery+CSS3アニメーション",
+               description:"WebViewアプリゲーム内で初のPvP型コンテンツです。",
+               img:{
+                 img1:"https://skunk-hrk.github.io/image/webviewapp/tkgr/battleroyal/top.png",
+                 img2:"https://skunk-hrk.github.io/image/webviewapp/tkgr/battleroyal/battle.png",
+                 img3:"https://skunk-hrk.github.io/image/webviewapp/tkgr/battleroyal/organization.png"
+               }
+             },
+             2:{
+               is_first_content:false,
+               is_even_number:true,
+               title:"研究所ページ",
+               responsible:"デザイン/HTML+CSSレイアウト/jQuery+CSS3アニメーション",
+               description:"既存コンテンツがフィーチャーフォンサイトだったので、スマートフォンにも対応できるようにリニューアルを行いました。",
+               img:{
+                 img1:"https://skunk-hrk.github.io/image/webviewapp/tkgr/laboratory/top.png",
+                 img2:"https://skunk-hrk.github.io/image/webviewapp/tkgr/laboratory/detail.png",
+                 img3:"https://skunk-hrk.github.io/image/webviewapp/tkgr/laboratory/get.png"
+               }
+             }
+           }
          },
          methods:{
            change_img : function(_img){
