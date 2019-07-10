@@ -146,6 +146,15 @@ html,body {
   top: 20px;
 }
 
+.bg_icon{
+  background-image: url("https://skunk-hrk.github.io/image/icon_skunk.svg");
+  background-size: 80% 80%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-position-x:calc(50% + 4px);
+  background-position-y:calc(50% + 4px);
+}
+
 .footer{
   position: fixed;
   font-size: 2.8vw;
@@ -306,38 +315,63 @@ html,body {
   background: #fff;
 }
 
-.web_circle{
-  display: inline-block;
-  border-radius: 50%;
-  border:solid 1px #0d4c6b;
-  line-height: 60px;
-  width:60px;
-  height:60px;
-  box-shadow: inset -2px -2px 0px rgba(100,100,100,0.1);
-  vertical-align: middle;
+.circle{
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:12vw;
+  height:12vw;
+  border:1px solid rgba(13,76,107,0.5);
+  border-radius:50%;
+  z-index:10;
 }
 
-.design_circle{
-  display: inline-block;
-  border:solid 1px #0d4c6b;
-  border-radius: 50%;
-  line-height: 60px;
-  width:60px;
-  height:60px;
-  box-shadow: inset -2px -2px 0px rgba(100,100,100,0.1);
-  vertical-align: middle;
+.option_click_area{
+  position: absolute;
+  width:12vw;
+  height:12vw;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index: 100;
 }
 
-.unity_circle{
-  display: inline-block;
-  border:solid 1px #0d4c6b;
-  border-radius: 50%;
-  line-height: 60px;
-  width:60px;
-  height:60px;
-  box-shadow: inset -2px -2px 0px rgba(100,100,100,0.1);
-  vertical-align: middle;
+.option_wrap{
+  position:absolute;
+  width:12vw;
+  height:12vw;
+  margin:auto;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
 }
+
+.option_right{
+  right:auto;
+  left:0;
+  transform:translate(0,-50%);
+}
+
+.option_right:hover > .circle,.option_left:hover > .circle,.option_center:hover > .circle{
+  animation-duration:1s;
+  -webkit-animation-duration:1s;
+}
+
+.option_left{
+  right:0;
+  left:auto;
+  transform:translate(0,-50%);
+}
+
+.option_char{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:50;
+}
+
+
 
 /**webviewappぺーじ用**/
 .content_img{
