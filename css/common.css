@@ -10,9 +10,9 @@ html,body {
   }
 
   .wrapper.top{
-    background: -moz-radial-gradient(#e5e5e5 20%, #b7b7b7 90%);
-    background: -webkit-radial-gradient(#e5e5e5 20%, #b7b7b7 90%);
-    background: radial-gradient(#e5e5e5 20%, #b7b7b7 90%);
+    background: url(https://skunk-hrk.github.io/image/common/crossword.png), -moz-radial-gradient(#e5e5e5 20%, #b7b7b7 90%);
+    background: url(https://skunk-hrk.github.io/image/common/crossword.png), -webkit-radial-gradient(#e5e5e5 20%, #b7b7b7 90%);
+    background: url(https://skunk-hrk.github.io/image/common/crossword.png), radial-gradient(#e5e5e5 20%, #b7b7b7 90%);
   }
 
   .wrapper.few{
