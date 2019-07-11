@@ -14,142 +14,189 @@
       </header>
 
       <div id="section_wrap">
-        <section style="width:100%; height:100vh; position:relative; z-index:500;">
-        <div class="bg_icon" style="width:60%; height:70%; margin:auto; background-color: rgba(0,0,0,0.6); -webkit-mask-image: url('https://skunk-hrk.github.io/image/icon_skunk.svg'); mask-image: url('https://skunk-hrk.github.io/image/icon_skunk.svg'); -webkit-mask-size: 80% 80%; mask-size: 80% 80%; -webkit-mask-position:no-repeat; mask-position:50%; -webkit-mask-repeat:50%; mask-repeat:no-repeat;" v-on:click='type="default", menu_select=false'></div>
-        <div style="position:relative; width:100%; height:30%;">
-          <div id="type_default" v-if="!menu_select">
-            <ul style="font-size:2vw; position:absolute; top:30%; left:0; list-style-type:none; width:100%; display:flex; justify-content: space-around; ">
-              <li style="display:inline-block; width:30%; position:relative;">
-                <div class="animated fadeIn option_wrap option_left" v-on:click='typeChange("about")'>
-                  <div class="option_char">
-                    about
-                  </div>
-                  <div class="rotate circle">
-                  </div>
-                  <div class="rotate2 circle">
-                  </div>
-                  <div class="rotate3 circle">
-                  </div>
-                </div>
-              </li>
-              <li style="display:inline-block; width:30%; position:relative;">
-                <div class="animated fadeIn option_wrap option_center" v-on:click='typeChange("work")'>
-                  <div class="option_char">
-                    Work
-                  </div>
-                  <div class="rotate circle">
-                  </div>
-                  <div class="rotate2 circle">
-                  </div>
-                  <div class="rotate3 circle">
-                  </div>
-                </div>
-              </li>
-              <li style="display:inline-block; width:30%; position:relative;">
-                <div class="animated fadeIn option_wrap option_right" v-on:click='typeChange("service")'>
-                  <div class="option_char">
-                    Service
-                  </div>
-                  <div class="rotate circle">
-                  </div>
-                  <div class="rotate2 circle">
-                  </div>
-                  <div class="rotate3 circle">
-                  </div>
-                </div>
-              </li>
-            </ul>
+        <section style="width:100%; height:100vh; position:relative; z-index:500; overflow-x:hidden;">
+        <div style="height:100%; display:flex;" v-bind:class="{slideRight:type==='about', slideLeft:back}">
+          <div style="flex:0 0 100%;">
+            <div class="bg_icon" style="-webkit-mask-position:no-repeat; mask-position:50%; -webkit-mask-repeat:50%; mask-repeat:no-repeat;" v-on:click='type="default", menu_select=false'></div>
+            <div style="position:relative; width:100%; height:30%;">
+              <div id="type_default" v-if="!menu_select">
+                <ul style="font-size:2vw; position:absolute; top:30%; left:0; list-style-type:none; width:100%; display:flex; justify-content: space-around; ">
+                  <li style="display:inline-block; width:30%; position:relative;">
+                    <div class="animated fadeIn option_wrap option_left" v-on:click='typeChange("about"), back=false'>
+                      <div class="option_char">
+                        about
+                      </div>
+                      <div class="rotate circle">
+                      </div>
+                      <div class="rotate2 circle">
+                      </div>
+                      <div class="rotate3 circle">
+                      </div>
+                    </div>
+                  </li>
+                  <li style="display:inline-block; width:30%; position:relative;">
+                    <div class="animated fadeIn option_wrap option_right" v-on:click='typeChange("work")'>
+                      <div class="option_char">
+                        Work
+                      </div>
+                      <div class="rotate circle">
+                      </div>
+                      <div class="rotate2 circle">
+                      </div>
+                      <div class="rotate3 circle">
+                      </div>
+                    </div>
+                  </li>
+                  <li style="display:inline-block; width:30%; position:relative; display:none;">
+                    <div class="animated fadeIn option_wrap option_right" v-on:click='typeChange("service")'>
+                      <div class="option_char">
+                        Service
+                      </div>
+                      <div class="rotate circle">
+                      </div>
+                      <div class="rotate2 circle">
+                      </div>
+                      <div class="rotate3 circle">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div id="type_work" v-if="type === 'work' && menu_select">
+                <ul style="font-size:2vw; position:absolute; top:30%; left:0; list-style-type:none; width:100%; display:flex; justify-content: space-around; ">
+                  <li style="display:inline-block; width:30%; position:relative;">
+                    <div class="animated fadeIn option_wrap option_left" v-on:click='modalOpen("webviewapp")'>
+                      <div class="option_char">
+                        WebView<br>App
+                      </div>
+                      <div class="rotate circle">
+                      </div>
+                      <div class="rotate2 circle">
+                      </div>
+                      <div class="rotate3 circle">
+                      </div>
+                    </div>
+                  </li>
+                  <li style="display:inline-block; width:30%; position:relative;">
+                    <div class="animated fadeIn option_wrap option_right" v-on:click='modalOpen("design")'>
+                      <div class="option_char">
+                        Design
+                      </div>
+                      <div class="rotate circle">
+                      </div>
+                      <div class="rotate2 circle">
+                      </div>
+                      <div class="rotate3 circle">
+                      </div>
+                    </div>
+                  </li>
+                  <li style="display:inline-block; width:30%; position:relative; display:none;">
+                    <div class="animated fadeIn option_wrap option_right" v-on:click='modalOpen("unity")'>
+                      <div class="option_char">
+                        Unity
+                      </div>
+                      <div class="rotate circle">
+                      </div>
+                      <div class="rotate2 circle">
+                      </div>
+                      <div class="rotate3 circle">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div id="type_service" v-else-if="type === 'service' && menu_select">
+                <ul style="font-size:2vw; position:absolute; top:30%; left:0; list-style-type:none; width:100%; display:flex; justify-content: space-around; ">
+                  <li style="display:inline-block; width:30%; position:relative;">
+                    <div class="animated fadeIn option_wrap option_left" v-on:click='modalOpen("LineStamp")'>
+                      <div class="option_char">
+                        LineStamp
+                      </div>
+                      <div class="rotate circle">
+                      </div>
+                      <div class="rotate2 circle">
+                      </div>
+                      <div class="rotate3 circle">
+                      </div>
+                    </div>
+                  </li>
+                  <li style="display:inline-block; width:30%; position:relative;">
+                    <div class="animated fadeIn option_wrap option_center" v-on:click='modalOpen("StampPaste")'>
+                      <div class="option_char">
+                        StampPaste
+                      </div>
+                      <div class="rotate circle">
+                      </div>
+                      <div class="rotate2 circle">
+                      </div>
+                      <div class="rotate3 circle">
+                      </div>
+                    </div>
+                  </li>
+                  <li style="display:inline-block; width:30%; position:relative;">
+                    <div class="animated fadeIn option_wrap option_right" v-on:click='modalOpen("Game")'>
+                      <div class="option_char">
+                        Game
+                      </div>
+                      <div class="rotate circle">
+                      </div>
+                      <div class="rotate2 circle">
+                      </div>
+                      <div class="rotate3 circle">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div id="type_work" v-if="type === 'work' && menu_select">
-            <ul style="font-size:2vw; position:absolute; top:30%; left:0; list-style-type:none; width:100%; display:flex; justify-content: space-around; ">
-              <li style="display:inline-block; width:30%; position:relative;">
-                <div class="animated fadeIn option_wrap option_left" v-on:click='modalOpen("webviewapp")'>
-                  <div class="option_char">
-                    WebView<br>App
-                  </div>
-                  <div class="rotate circle">
-                  </div>
-                  <div class="rotate2 circle">
-                  </div>
-                  <div class="rotate3 circle">
-                  </div>
+          <div style="flex:0 0 100%; vertical-align:middle; width:100%; height:100%; font-size: large; position:relative;">
+            <div style="position:absolute; top:50%;left:50%; transform:translate(-50%, -50%);">
+              <div style="text-align:center; padding:10px; line-height:1.4;">
+                <h2 style="font-size:x-large;">
+                   人物
+                </h2>
+                <div style="font-size:large; margin-bottom:10px;">
+                  名称：すかんく<br>
+                  所在地：千葉県内
                 </div>
-              </li>
-              <li style="display:inline-block; width:30%; position:relative;">
-                <div class="animated fadeIn option_wrap option_center" v-on:click='modalOpen("design")'>
-                  <div class="option_char">
-                    Design
-                  </div>
-                  <div class="rotate circle">
-                  </div>
-                  <div class="rotate2 circle">
-                  </div>
-                  <div class="rotate3 circle">
-                  </div>
+                <h2 style="font-size:x-large;">
+                   趣味
+                </h2>
+                <div style="font-size:large; margin-bottom:10px;">
+                  釣り<br>
+                  囲碁<br>
+                  将棋<br>
+                  かき氷<span style="font-size:small;">(食べる)</span><br>
+                  カレー<span style="font-size:small;">(食べる/作る)</span>
                 </div>
-              </li>
-              <li style="display:inline-block; width:30%; position:relative;">
-                <div class="animated fadeIn option_wrap option_right" v-on:click='modalOpen("unity")'>
-                  <div class="option_char">
-                    Unity
-                  </div>
-                  <div class="rotate circle">
-                  </div>
-                  <div class="rotate2 circle">
-                  </div>
-                  <div class="rotate3 circle">
-                  </div>
+                <h2 style="font-size:x-large;">
+                   スキル
+                </h2>
+                <div style="font-size:large; margin-bottom:10px;">
+                  HTML + CSS：★★★★☆<br>
+                  JavaScript：★★★★☆<br>
+                  jQuery：★★★★☆<br>
+                  Photoshop：★★★★☆<br>
+                  Illustrator：★★★★☆<br>
+                  AfterEffects：★★★☆☆<br>
+                  PremirePro：★★★☆☆<br>
+                  Unity：★★☆☆☆<br>
+                  PHP：★★☆☆☆<br>
+                  MySQL：★☆☆☆☆
                 </div>
-              </li>
-            </ul>
-          </div>
-          <div id="type_service" v-else-if="type === 'service' && menu_select">
-            <ul style="font-size:2vw; position:absolute; top:30%; left:0; list-style-type:none; width:100%; display:flex; justify-content: space-around; ">
-              <li style="display:inline-block; width:30%; position:relative;">
-                <div class="animated fadeIn option_wrap option_left" v-on:click='modalOpen("LineStamp")'>
-                  <div class="option_char">
-                    LineStamp
-                  </div>
-                  <div class="rotate circle">
-                  </div>
-                  <div class="rotate2 circle">
-                  </div>
-                  <div class="rotate3 circle">
-                  </div>
-                </div>
-              </li>
-              <li style="display:inline-block; width:30%; position:relative;">
-                <div class="animated fadeIn option_wrap option_center" v-on:click='modalOpen("StampPaste")'>
-                  <div class="option_char">
-                    StampPaste
-                  </div>
-                  <div class="rotate circle">
-                  </div>
-                  <div class="rotate2 circle">
-                  </div>
-                  <div class="rotate3 circle">
-                  </div>
-                </div>
-              </li>
-              <li style="display:inline-block; width:30%; position:relative;">
-                <div class="animated fadeIn option_wrap option_right" v-on:click='modalOpen("Game")'>
-                  <div class="option_char">
-                    Game
-                  </div>
-                  <div class="rotate circle">
-                  </div>
-                  <div class="rotate2 circle">
-                  </div>
-                  <div class="rotate3 circle">
-                  </div>
-                </div>
-              </li>
-            </ul>
+              </div>
+              <div style="width:100%; text-align:center;" v-on:click="typeChange('default'),back=true">BACK</div>
+            </div>
           </div>
         </div>
 
         <div style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:100;" v-show="show_modal_bg" v-on:click="modalClose">
         </div>
+      </section>
+      <section>
+
+
       </section>
     </div>
 
@@ -162,29 +209,59 @@
     <div id="modal" style="position:relative; z-index:1000;">
       <div id="modal_wrap" class="animated fadeIn" v-show="modal_show" v-bind:class="{fadeOut:hidden}">
         <div style="position:fixed; top:50%; left:50%; overflow-y: scroll; z-index: 1000; transform:translate(-50% ,-50%); min-width: 160px; width:90%; height:90%;">
-          <div v-for="value in items">
-            <div class="content_wrap" v-bind:class="{content_even_number:value.is_even_number}">
-              <div class="content_title">{{ value.title }}</div>
-              <div class="content_detail">
 
-                <div v-for="img in value.img">
-                  <div  class="content_img">
-                      <img :src="img" width="100%" height="auto" style="vertical-align:bottom; position:relative;">
+          <div v-if="content_type==='webviewapp'">
+            <div v-for="value in webviewapp_items">
+              <div class="content_wrap" v-bind:class="{content_even_number:value.is_even_number}">
+                <div class="content_title">{{ value.title }}</div>
+                <div class="content_detail">
+
+                  <div v-for="img in value.img">
+                    <div  class="content_img">
+                        <img :src="img" width="100%" height="auto" style="vertical-align:bottom; position:relative;">
+                    </div>
                   </div>
-                </div>
-                <div class="content_description">
-                  <div class="content_description_box">
-                    <div style="padding:0 10px 10px 10px">
-                      <div class="content_description_subtitle">概要</div>
-                      {{ value.description }}
-                      <div class="content_description_subtitle">担当業務</div>
-                      {{ value.responsible }}
+                  <div class="content_description">
+                    <div class="content_description_box">
+                      <div style="padding:0 10px 10px 10px">
+                        <div class="content_description_subtitle">概要</div>
+                        {{ value.description }}
+                        <div class="content_description_subtitle">担当業務</div>
+                        {{ value.responsible }}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <div v-else-if="content_type==='design'">
+            <div v-for="value in design_items">
+              <div class="content_wrap" v-bind:class="{content_even_number:value.is_even_number}">
+                <div class="content_title">{{ value.title }}</div>
+                <div class="content_detail">
+
+                  <div v-for="img in value.img" style="padding:10px 0;">
+                    <div  class="content_img">
+                        <img :src="img" width="100%" height="auto" style="vertical-align:bottom; position:relative;">
+                    </div>
+                  </div>
+                  <div class="content_description">
+                    <div class="content_description_box">
+                      <div style="padding:0 10px 10px 10px">
+                        <div class="content_description_subtitle">概要</div>
+                        {{ value.description }}
+                        <div class="content_description_subtitle">担当業務</div>
+                        {{ value.responsible }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -210,20 +287,25 @@
            type: 'default',
            menu_select:false,
            show_modal_bg:false,
+           back:false,
          },
          methods:{
            typeChange:function(_type){
-             this.menu_select = true;
+             if(_type == 'default'){
+               this.menu_select = false;
+             } else {
+               this.menu_select = true;
+             }
+
              this.type = _type;
            },
            modalOpen:function(_contents_type){
-             console.log("modalOpen")
              this.show_modal_bg = true;
              modal.show_modal(_contents_type);
            },
            modalClose:function(){
              this.show_modal_bg = false;
-             console.log("modalClose");
+             modal.close_modal();
            }
          }
        });
@@ -234,7 +316,8 @@
            modal_show:false,
            hidden:false,
            img:null,
-           items: {
+           content_type: "default",
+           webviewapp_items: {
              0:{
                is_first_content:true,
                is_even_number:true,
@@ -271,13 +354,61 @@
                  img3:"https://skunk-hrk.github.io/image/webviewapp/tkgr/laboratory/get.png"
                }
              }
+           },
+           design_items: {
+             0:{
+               is_first_content:true,
+               is_even_number:true,
+               title:"文字アイテム",
+               responsible:"デザイン/追加制作時の業務フロー確立",
+               description:"WebViewアプリゲーム内の箱庭的コンテンツの設置アイテムになります。サイズや表示位置など制限がある中で作成しました。また追加で作成する事が想定されていましたので、psdファイル内のレイヤーを可能な限り分かりやすい構造にしました。",
+               img:{
+                 img1:"https://skunk-hrk.github.io/image/webviewapp/town/character_items/5_1.png",
+                 img2:"https://skunk-hrk.github.io/image/webviewapp/town/character_items/5_2.png",
+                 img3:"https://skunk-hrk.github.io/image/webviewapp/town/character_items/5_3.png",
+                 img4:"https://skunk-hrk.github.io/image/webviewapp/town/character_items/5_4.png",
+                 img5:"https://skunk-hrk.github.io/image/webviewapp/town/character_items/5_5.png",
+                 img6:"https://skunk-hrk.github.io/image/webviewapp/town/character_items/5_92.png"
+               }
+             },
+             1:{
+               is_first_content:false,
+               is_even_number:false,
+               title:"バナー",
+               responsible:"デザイン",
+               description:"WebViewアプリゲーム内で使用したバナーです。各イベントのイメージに沿った画像の作成を行いました。詳細のラフがある場合は1時間前後で作成しています。タイトルのみ伝えられた場合でも、そのイメージから作成することが可能です。イベントロゴについてはなるべくIllustratorで作成し拡縮できるようにしました。",
+               img:{
+                 img1:"https://skunk-hrk.github.io/image/webviewapp/banner/lottery_63_smartphone.png",
+                 img2:"https://skunk-hrk.github.io/image/webviewapp/banner/lottery_64_smartphone.png",
+                 img3:"https://skunk-hrk.github.io/image/webviewapp/banner/lottery_65_smartphone.png",
+                 img4:"https://skunk-hrk.github.io/image/webviewapp/banner/baner_baby40.png",
+                 img5:"https://skunk-hrk.github.io/image/webviewapp/banner/valentine_baby.png",
+                 img6:"https://skunk-hrk.github.io/image/webviewapp/banner/banner46.png",
+                 img7:"https://skunk-hrk.github.io/image/webviewapp/banner/banner47.png",
+                 img8:"https://skunk-hrk.github.io/image/webviewapp/banner/banner49.png",
+                 img9:"https://skunk-hrk.github.io/image/webviewapp/banner/banner50.png",
+               }
+             },
+             2:{
+               is_first_content:false,
+               is_even_number:true,
+               title:"スタンドバナー",
+               responsible:"デザイン/提案/発注",
+               description:"友人の結婚式のウェウカムスペースに飾るスタンドバナーの作成を行っています。印刷物は完全データで納品し印刷のみ業者に対応してもらっています。",
+               img:{
+                 img1:"https://skunk-hrk.github.io/image/common/coming_soon.png",
+                 img2:"https://skunk-hrk.github.io/image/common/coming_soon.png",
+                 img3:"https://skunk-hrk.github.io/image/common/coming_soon.png"
+               }
+             }
            }
          },
          methods:{
            change_img : function(_img){
              this.img = _img;
            },
-           show_modal : function(){
+           show_modal : function(content_type){
+             this.content_type = content_type;
              this.modal_show = true;
              this.hidden = false;
            },
