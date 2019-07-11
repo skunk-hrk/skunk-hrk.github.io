@@ -1,0 +1,8 @@
+@font-face
+{
+font-family: 'M+ Type-1 (general-j) Bold';
+src: url('mplus-1-bold-sub.eot');
+src: url('mplus-1-bold-sub.eot?#iefix') format('embedded-opentype'),
+url('mplus-1-bold-sub.woff') format('woff'),
+url('mplus-1-bold-sub.ttf') format('truetype');
+}
